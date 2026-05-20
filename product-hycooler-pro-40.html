@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>HyCooler Pro 40 Dual Zone — Hyckes</title>
+<title>HyCooler Pro 40 Dual Zone — Compressor koelbox | Hyckes</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -15,31 +15,24 @@
     --paper:  #F6F3EE;
     --line:   #E4E0D8;
     --white:  #FFFFFF;
+    --good:   #1a7a38;
   }
-
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html, body { background: var(--white); color: var(--ink); }
   body { font-family: 'Inter', system-ui, sans-serif; font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
   h1, h2, h3, h4 { font-family: 'Archivo', sans-serif; line-height: 1.1; letter-spacing: -0.02em; }
   h1 { font-size: clamp(30px, 4vw, 48px); font-weight: 800; }
-  h2 { font-size: clamp(24px, 3vw, 36px); font-weight: 800; }
+  h2 { font-size: clamp(22px, 3vw, 34px); font-weight: 800; }
   h3 { font-size: 20px; font-weight: 700; }
   p  { color: var(--muted); line-height: 1.65; }
   a  { color: inherit; text-decoration: none; }
-
+  strong { color: var(--ink); }
   .wrap { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
   @media (max-width: 600px) { .wrap { padding: 0 20px; } }
 
-  /* ── NAV ── */
-  .nav {
-    position: sticky; top: 0; z-index: 40;
-    background: var(--white);
-    border-bottom: 1px solid var(--line);
-  }
-  .nav-inner {
-    display: flex; align-items: center; justify-content: space-between;
-    height: 64px; max-width: 1180px; margin: 0 auto; padding: 0 32px;
-  }
+  /* NAV */
+  .nav { position: sticky; top: 0; z-index: 40; background: var(--white); border-bottom: 1px solid var(--line); }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; max-width: 1180px; margin: 0 auto; padding: 0 32px; }
   .logo { font-family: 'Archivo'; font-weight: 900; font-size: 20px; letter-spacing: -0.02em; }
   .logo em { color: var(--orange); font-style: normal; }
   .nav-links { display: flex; gap: 28px; font-size: 14px; font-weight: 500; color: var(--muted); }
@@ -48,59 +41,34 @@
   .nav-cart { background: var(--ink); color: var(--white); padding: 8px 18px; border-radius: 8px; font-weight: 600; font-size: 13px; }
   @media (max-width: 780px) { .nav-links { display: none; } }
 
-  /* ── BREADCRUMB ── */
+  /* BREADCRUMB */
   .crumb { padding: 16px 0; font-size: 13px; color: var(--muted); }
   .crumb a { color: var(--muted); }
   .crumb a:hover { color: var(--ink); }
   .crumb .sep { margin: 0 8px; opacity: .4; }
 
-  /* ── HERO ── */
-  .hero {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 64px;
-    padding: 16px 0 80px;
-    align-items: start;
-  }
+  /* HERO */
+  .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; padding: 16px 0 80px; align-items: start; }
   @media (max-width: 900px) { .hero { grid-template-columns: 1fr; gap: 40px; } }
 
   /* gallery */
   .gallery { position: sticky; top: 80px; }
-  .gallery-main {
-    aspect-ratio: 1 / 1;
-    border-radius: 16px;
-    overflow: hidden;
-    background: var(--paper);
-    cursor: zoom-in;
-  }
-  .gallery-main img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .3s ease; }
-  .gallery-main:hover img { transform: scale(1.03); }
+  .gallery-main { aspect-ratio: 1/1; border-radius: 16px; overflow: hidden; background: var(--paper); }
+  .gallery-main img { width: 100%; height: 100%; object-fit: contain; display: block; padding: 16px; transition: transform .3s ease; }
+  .gallery-main:hover img { transform: scale(1.04); }
   .gallery-thumbs { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
-  .thumb {
-    width: 64px; height: 64px; border-radius: 8px; overflow: hidden;
-    border: 2px solid transparent; cursor: pointer; background: var(--paper); flex-shrink: 0;
-  }
-  .thumb img { width: 100%; height: 100%; object-fit: cover; }
+  .thumb { width: 64px; height: 64px; border-radius: 8px; overflow: hidden; border: 2px solid transparent; cursor: pointer; background: var(--paper); flex-shrink: 0; }
+  .thumb img { width: 100%; height: 100%; object-fit: contain; padding: 4px; }
   .thumb.active { border-color: var(--ink); }
   .thumb:hover { border-color: var(--muted); }
 
   /* buy panel */
-  .buy { display: flex; flex-direction: column; gap: 28px; }
-
-  .product-label {
-    display: inline-block;
-    font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
-    color: var(--orange); margin-bottom: 10px;
-  }
-
-  .star-row { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--muted); margin-top: 12px; }
+  .buy { display: flex; flex-direction: column; gap: 24px; }
+  .product-label { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--orange); margin-bottom: 10px; }
+  .product-sub { font-size: 16px; color: var(--muted); margin-top: 12px; line-height: 1.5; max-width: 460px; }
+  .star-row { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--muted); margin-top: 10px; }
   .stars { color: var(--orange); letter-spacing: 2px; font-size: 13px; }
-
-  .stock-badge {
-    display: inline-flex; align-items: center; gap: 6px;
-    font-size: 13px; font-weight: 600; color: #1a7a38;
-    margin-top: 4px;
-  }
+  .stock-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--good); margin-top: 4px; }
   .stock-dot { width: 7px; height: 7px; border-radius: 50%; background: #2E9A43; animation: pulse 2s infinite; }
   @keyframes pulse { 0%,100% { box-shadow: 0 0 0 3px #2E9A4322; } 50% { box-shadow: 0 0 0 5px #2E9A4311; } }
 
@@ -108,24 +76,24 @@
   .picker-label { font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 8px; }
   .picker-label span { color: var(--muted); font-weight: 400; }
   .picker-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-  .pick {
-    border: 1.5px solid var(--line); border-radius: 10px; padding: 12px 10px;
-    cursor: pointer; text-align: left; background: var(--white); font-family: inherit;
-    display: flex; flex-direction: column; gap: 2px; transition: border-color .15s; position: relative;
-  }
+  .pick { border: 1.5px solid var(--line); border-radius: 10px; padding: 12px 10px; cursor: pointer; text-align: left; background: var(--white); font-family: inherit; display: flex; flex-direction: column; gap: 2px; transition: border-color .15s; position: relative; }
   .pick:hover { border-color: var(--ink); }
   .pick.on { border-color: var(--ink); background: var(--paper); }
   .pick .sz { font-family: 'Archivo'; font-weight: 700; font-size: 15px; }
   .pick .info { font-size: 11.5px; color: var(--muted); }
   .pick .pr { font-size: 13px; font-weight: 600; margin-top: 4px; }
-  .pick.popular::after {
-    content: 'Populairst'; position: absolute; top: -9px; left: 50%; transform: translateX(-50%);
-    background: var(--ink); color: var(--white); font-size: 9px; font-weight: 700;
-    padding: 2px 8px; border-radius: 3px; letter-spacing: .06em; white-space: nowrap;
-  }
+  .pick.popular::after { content: 'Populairst'; position: absolute; top: -9px; left: 50%; transform: translateX(-50%); background: var(--ink); color: var(--white); font-size: 9px; font-weight: 700; padding: 2px 8px; border-radius: 3px; letter-spacing: .06em; white-space: nowrap; }
+
+  /* zone explanation */
+  .zone-explain { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
+  .zone-block { border-radius: 8px; padding: 11px 13px; border: 1.5px solid var(--line); background: var(--white); transition: border-color .15s, background .15s; }
+  .zone-block .zone-name { font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+  .zone-block .zone-desc { font-size: 12.5px; color: var(--muted); line-height: 1.45; }
+  .zone-block.active { border-color: var(--ink); background: var(--paper); }
+  .zone-block.active .zone-name { color: var(--ink); }
 
   /* price */
-  .price-block { display: flex; align-items: baseline; gap: 10px; }
+  .price-block { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
   .price { font-family: 'Archivo'; font-weight: 800; font-size: 38px; letter-spacing: -0.02em; }
   .price-was { font-size: 18px; color: var(--muted); text-decoration: line-through; font-weight: 400; }
   .price-save { font-size: 13px; font-weight: 600; color: var(--orange); }
@@ -134,60 +102,96 @@
   /* benefits */
   .benefits { display: flex; flex-direction: column; gap: 10px; }
   .benefit { display: flex; align-items: flex-start; gap: 10px; font-size: 14.5px; }
-  .benefit-check { width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px; color: var(--orange); }
+  .benefit-check { width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px; }
 
   /* CTA */
   .cta-row { display: flex; gap: 10px; }
-  .btn-add {
-    flex: 1; height: 52px; background: var(--ink); color: var(--white);
-    border: none; border-radius: 10px; font-family: 'Archivo'; font-weight: 700;
-    font-size: 15px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;
-    transition: background .15s;
-  }
+  .btn-add { flex: 1; height: 52px; background: var(--ink); color: var(--white); border: none; border-radius: 10px; font-family: 'Archivo'; font-weight: 700; font-size: 15px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: background .15s; }
   .btn-add:hover { background: #2a2a2a; }
-  .btn-wish {
-    width: 52px; height: 52px; border: 1.5px solid var(--line); border-radius: 10px;
-    background: var(--white); cursor: pointer; display: grid; place-items: center; transition: border-color .15s;
-  }
+  .btn-wish { width: 52px; height: 52px; border: 1.5px solid var(--line); border-radius: 10px; background: var(--white); cursor: pointer; display: grid; place-items: center; transition: border-color .15s; }
   .btn-wish:hover { border-color: var(--ink); }
   .btn-wish.on svg { fill: var(--orange); stroke: var(--orange); }
-
   .trust-row { display: flex; flex-wrap: wrap; gap: 14px; font-size: 13px; color: var(--muted); padding-top: 4px; }
   .trust-item { display: flex; align-items: center; gap: 6px; }
 
-  /* ── DIVIDER ── */
+  /* QTY */
+  .qty { display: flex; align-items: center; border: 1.5px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--white); }
+  .qty button { background: none; border: none; width: 44px; height: 52px; font-size: 18px; cursor: pointer; font-family: inherit; color: var(--ink); }
+  .qty input { width: 44px; height: 52px; border: none; text-align: center; font-family: 'Archivo'; font-weight: 700; font-size: 16px; background: transparent; outline: none; }
+
+  /* DIVIDER */
   .divider { border: none; border-top: 1px solid var(--line); margin: 0; }
 
-  /* ── SECTION BASE ── */
+  /* SECTIONS */
   .section { padding: 80px 0; }
   .section-sm { padding: 56px 0; }
+  .section-title { margin-bottom: 8px; }
+  .section-sub { font-size: 15px; color: var(--muted); margin-top: 8px; max-width: 560px; }
 
-  /* ── IN DE DOOS ── */
+  /* IN DE DOOS */
   .inbox-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 40px; }
   .inbox-item { text-align: center; }
-  .inbox-img { aspect-ratio: 1; border-radius: 12px; background: var(--paper); overflow: hidden; margin-bottom: 10px; }
-  .inbox-img img { width: 100%; height: 100%; object-fit: cover; }
+  .inbox-img { aspect-ratio: 1; border-radius: 12px; background: var(--paper); overflow: hidden; margin-bottom: 10px; display: flex; align-items: center; justify-content: center; }
+  .inbox-img img { width: 100%; height: 100%; object-fit: contain; padding: 8px; }
   .inbox-name { font-size: 13px; font-weight: 600; }
   .inbox-desc { font-size: 12px; color: var(--muted); margin-top: 2px; }
   @media (max-width: 700px) { .inbox-grid { grid-template-columns: repeat(2, 1fr); } }
 
-  /* ── ALTERNATING FEATURE ROWS ── */
-  .feat-row {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; padding: 64px 0;
-    border-top: 1px solid var(--line);
-  }
+  /* OFF-GRID SECTION */
+  .offgrid { background: var(--paper); border-radius: 18px; padding: 48px; }
+  .offgrid-head { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; margin-bottom: 40px; }
+  .offgrid-head p { font-size: 15px; }
+  .offgrid-flow { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 0; align-items: center; }
+  .offgrid-step { background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: 24px 20px; text-align: center; }
+  .offgrid-step .step-icon { font-size: 28px; margin-bottom: 8px; }
+  .offgrid-step .step-name { font-family: 'Archivo'; font-weight: 700; font-size: 15px; margin-bottom: 4px; }
+  .offgrid-step .step-desc { font-size: 13px; color: var(--muted); line-height: 1.4; }
+  .offgrid-arrow { font-size: 24px; color: var(--muted); text-align: center; padding: 0 12px; flex-shrink: 0; }
+  .compat-note { margin-top: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .compat-yes { background: #F0FDF4; border: 1px solid #2E7D3222; border-radius: 10px; padding: 14px 16px; font-size: 13.5px; }
+  .compat-no  { background: #FFF8F5; border: 1px solid #D6522B22; border-radius: 10px; padding: 14px 16px; font-size: 13.5px; }
+  .compat-yes strong { color: var(--good); font-weight: 700; display: block; margin-bottom: 3px; }
+  .compat-no  strong { color: var(--orange); font-weight: 700; display: block; margin-bottom: 3px; }
+  @media (max-width: 820px) { .offgrid { padding: 28px; } .offgrid-head { grid-template-columns: 1fr; gap: 20px; } .offgrid-flow { grid-template-columns: 1fr; } .offgrid-arrow { transform: rotate(90deg); padding: 8px 0; } .compat-note { grid-template-columns: 1fr; } }
+
+  /* MODEL COMPARISON */
+  .model-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--line); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; margin-top: 40px; }
+  .model-col { background: var(--white); padding: 28px 24px; display: flex; flex-direction: column; gap: 16px; }
+  .model-col.highlight { background: var(--paper); position: relative; }
+  .model-col.highlight::before { content: 'Deze pagina'; position: absolute; top: 14px; right: 14px; background: var(--ink); color: var(--white); font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 4px; letter-spacing: .04em; }
+  .model-img { aspect-ratio: 4/3; border-radius: 10px; overflow: hidden; background: var(--paper); }
+  .model-img img { width: 100%; height: 100%; object-fit: contain; padding: 12px; }
+  .model-name { font-family: 'Archivo'; font-weight: 800; font-size: 18px; }
+  .model-tagline { font-size: 13px; color: var(--muted); line-height: 1.45; }
+  .model-specs { display: flex; flex-direction: column; gap: 6px; }
+  .model-spec-row { display: flex; justify-content: space-between; font-size: 13px; padding: 6px 0; border-bottom: 1px solid var(--line); }
+  .model-spec-row:last-child { border-bottom: none; }
+  .model-spec-row .sk { color: var(--muted); }
+  .model-spec-row .sv { font-weight: 600; }
+  .check-yes { color: var(--good); font-weight: 700; }
+  .check-no  { color: #aaa; }
+  .model-cta { display: block; text-align: center; border: 1.5px solid var(--line); border-radius: 8px; padding: 10px; font-size: 13.5px; font-weight: 600; margin-top: auto; transition: border-color .15s, background .15s; }
+  .model-cta:hover { border-color: var(--ink); background: var(--paper); }
+  .model-cta.primary { background: var(--ink); color: var(--white); border-color: var(--ink); }
+  .model-cta.primary:hover { background: #2a2a2a; }
+  @media (max-width: 820px) { .model-grid { grid-template-columns: 1fr; } }
+
+  /* ALTERNATING FEATURE ROWS */
+  .feat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; padding: 64px 0; border-top: 1px solid var(--line); }
   .feat-row.flip { direction: rtl; }
   .feat-row.flip > * { direction: ltr; }
-  .feat-row:first-of-type { border-top: none; }
-  .feat-img { aspect-ratio: 4 / 3; border-radius: 16px; overflow: hidden; background: var(--paper); }
-  .feat-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .feat-img { aspect-ratio: 4/3; border-radius: 16px; overflow: hidden; background: var(--paper); }
+  .feat-img img { width: 100%; height: 100%; object-fit: contain; padding: 20px; display: block; }
   .feat-text { display: flex; flex-direction: column; gap: 16px; }
   .feat-badge { font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--orange); }
   .feat-text h3 { font-size: clamp(20px, 2.5vw, 28px); }
   .feat-text p { font-size: 15px; max-width: 440px; }
-  @media (max-width: 820px) { .feat-row { grid-template-columns: 1fr; gap: 28px; }.feat-row.flip { direction: ltr; } }
+  .feat-detail { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
+  .feat-detail-row { display: flex; align-items: center; gap: 10px; font-size: 13.5px; }
+  .feat-detail-row svg { flex-shrink: 0; color: var(--orange); }
+  @media (max-width: 820px) { .feat-row { grid-template-columns: 1fr; gap: 28px; } .feat-row.flip { direction: ltr; } }
 
-  /* ── SPECS ── */
+  /* SPECS */
   .specs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; margin-top: 40px; }
   .spec-col { padding: 28px 32px; }
   .spec-col:first-child { border-right: 1px solid var(--line); }
@@ -198,7 +202,7 @@
   .spec-v { font-family: 'Archivo'; font-weight: 600; }
   @media (max-width: 700px) { .specs-grid { grid-template-columns: 1fr; } .spec-col:first-child { border-right: none; border-bottom: 1px solid var(--line); } }
 
-  /* ── REVIEWS ── */
+  /* REVIEWS */
   .rev-header { display: grid; grid-template-columns: 200px 1fr; gap: 48px; align-items: start; }
   .rev-score { font-family: 'Archivo'; font-weight: 800; font-size: 56px; line-height: 1; letter-spacing: -0.03em; }
   .rev-meta { font-size: 13px; color: var(--muted); margin-top: 6px; }
@@ -215,20 +219,17 @@
   .rev p { font-size: 15px; color: var(--ink); line-height: 1.55; }
   @media (max-width: 700px) { .rev-header { grid-template-columns: 1fr; gap: 24px; } }
 
-  /* ── FAQ ── */
+  /* FAQ */
   .faq { margin-top: 40px; border-top: 1px solid var(--line); }
   .faq details { border-bottom: 1px solid var(--line); }
-  .faq summary {
-    padding: 20px 0; cursor: pointer; font-family: 'Archivo'; font-weight: 700; font-size: 16px;
-    list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 20px; user-select: none;
-  }
+  .faq summary { padding: 20px 0; cursor: pointer; font-family: 'Archivo'; font-weight: 700; font-size: 16px; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 20px; user-select: none; }
   .faq summary::-webkit-details-marker { display: none; }
   .faq summary::after { content: '+'; font-size: 22px; font-weight: 300; color: var(--muted); flex-shrink: 0; }
   .faq details[open] summary::after { content: '−'; }
   .faq .ans { padding: 0 0 20px; font-size: 15px; line-height: 1.6; color: var(--muted); max-width: 680px; }
   .faq .ans strong { color: var(--ink); font-weight: 600; }
 
-  /* ── FINAL CTA ── */
+  /* FINAL CTA */
   .final { background: var(--paper); border-radius: 18px; padding: 56px 48px; display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center; margin: 80px 0; }
   .final h2 { margin-bottom: 10px; }
   .final p { font-size: 15px; max-width: 480px; }
@@ -241,7 +242,7 @@
   .btn-secondary:hover { border-color: var(--ink); }
   @media (max-width: 720px) { .final { grid-template-columns: 1fr; padding: 36px 28px; } .final-actions { align-items: flex-start; } }
 
-  /* ── FOOTER ── */
+  /* FOOTER */
   footer { background: var(--ink); color: var(--white); padding: 56px 0 28px; font-size: 14px; }
   .foot-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
   .foot-logo { font-family: 'Archivo'; font-weight: 900; font-size: 20px; letter-spacing: -0.02em; margin-bottom: 12px; }
@@ -253,20 +254,10 @@
   footer ul a:hover { color: var(--white); }
   .foot-bottom { border-top: 1px solid #ffffff14; padding-top: 24px; display: flex; justify-content: space-between; font-size: 12px; color: #ffffff44; flex-wrap: wrap; gap: 8px; }
   @media (max-width: 820px) { .foot-grid { grid-template-columns: 1fr 1fr; gap: 28px; } }
-
-  /* section title */
-  .section-title { margin-bottom: 8px; }
-  .section-sub { font-size: 15px; color: var(--muted); margin-top: 8px; max-width: 540px; }
-
-  /* qty */
-  .qty { display: flex; align-items: center; border: 1.5px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--white); }
-  .qty button { background: none; border: none; width: 44px; height: 52px; font-size: 18px; cursor: pointer; font-family: inherit; color: var(--ink); }
-  .qty input { width: 44px; height: 52px; border: none; text-align: center; font-family: 'Archivo'; font-weight: 700; font-size: 16px; background: transparent; outline: none; }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <header class="nav">
   <div class="nav-inner">
     <a href="index.html" class="logo">HYCKES<em>.</em></a>
@@ -284,36 +275,53 @@
 
 <div class="wrap">
 
-  <!-- BREADCRUMB -->
   <div class="crumb">
     <a href="index.html">Home</a><span class="sep">/</span>
     <a href="#">Koelboxen</a><span class="sep">/</span>
-    <span>HyCooler Pro 40 Dual Zone</span>
+    <a href="#">HyCooler Pro</a><span class="sep">/</span>
+    <span>Pro 40 Dual Zone</span>
   </div>
 
   <!-- ═══════════ HERO ═══════════ -->
   <div class="hero">
 
-    <!-- Gallery -->
     <div class="gallery">
       <div class="gallery-main">
-        <img id="main-img" src="hyckes/project/uploads/4.png" alt="HyCooler Pro 40 Dual Zone">
+        <img id="main-img" src="Productfoto's/HyCooler Pro 40 Dual zone/dual40_3d_right.png" alt="HyCooler Pro 40 Dual Zone">
       </div>
       <div class="gallery-thumbs">
-        <div class="thumb active" data-src="hyckes/project/uploads/4.png"><img src="hyckes/project/uploads/4.png" alt=""></div>
-        <div class="thumb" data-src="hyckes/project/uploads/1.png"><img src="hyckes/project/uploads/1.png" alt=""></div>
-        <div class="thumb" data-src="hyckes/project/uploads/2.png"><img src="hyckes/project/uploads/2.png" alt=""></div>
-        <div class="thumb" data-src="hyckes/project/uploads/7.png"><img src="hyckes/project/uploads/7.png" alt=""></div>
-        <div class="thumb" data-src="hyckes/project/uploads/8.png"><img src="hyckes/project/uploads/8.png" alt=""></div>
-        <div class="thumb" data-src="hyckes/project/uploads/9.png"><img src="hyckes/project/uploads/9.png" alt=""></div>
+        <div class="thumb active" data-src="Productfoto's/HyCooler Pro 40 Dual zone/dual40_3d_right.png">
+          <img src="Productfoto's/HyCooler Pro 40 Dual zone/dual40_3d_right.png" alt="">
+        </div>
+        <div class="thumb" data-src="Productfoto's/HyCooler Pro 40 Dual zone/dual40_front.png">
+          <img src="Productfoto's/HyCooler Pro 40 Dual zone/dual40_front.png" alt="">
+        </div>
+        <div class="thumb" data-src="Productfoto's/HyCooler Pro 40 Dual zone/dual40_top_open.png">
+          <img src="Productfoto's/HyCooler Pro 40 Dual zone/dual40_top_open.png" alt="">
+        </div>
+        <div class="thumb" data-src="Productfoto's/HyCooler Pro 40 Dual zone/dual40_top_open_left_filled.png">
+          <img src="Productfoto's/HyCooler Pro 40 Dual zone/dual40_top_open_left_filled.png" alt="">
+        </div>
+        <div class="thumb" data-src="Productfoto's/HyCooler Pro 40 Dual zone/dual40_top_open_right_filled.png">
+          <img src="Productfoto's/HyCooler Pro 40 Dual zone/dual40_top_open_right_filled.png" alt="">
+        </div>
+        <div class="thumb" data-src="Productfoto's/HyCooler Pro 40 Dual zone/dual40_top_cuttingboard.png">
+          <img src="Productfoto's/HyCooler Pro 40 Dual zone/dual40_top_cuttingboard.png" alt="">
+        </div>
+        <div class="thumb" data-src="Productfoto's/HyCooler Pro 40 Dual zone/dual40_left_open.png">
+          <img src="Productfoto's/HyCooler Pro 40 Dual zone/dual40_left_open.png" alt="">
+        </div>
+        <div class="thumb" data-src="Productfoto's/HyCooler Pro 40 Dual zone/dual40_3d_right_open1.png">
+          <img src="Productfoto's/HyCooler Pro 40 Dual zone/dual40_3d_right_open1.png" alt="">
+        </div>
       </div>
     </div>
 
-    <!-- Buy panel -->
     <div class="buy">
       <div>
         <span class="product-label">HyCooler Pro · Dual Zone</span>
         <h1>Pro <span id="h1-size">40</span> Dual Zone</h1>
+        <p class="product-sub">Koelen én vriezen in één compacte compressor koelbox. Voor 3–4 personen, in de camper, auto of op de boot — ook zonder netstroom.</p>
         <div class="star-row">
           <span class="stars">★★★★★</span>
           <a href="#reviews">4,8 · 23 reviews</a>
@@ -323,9 +331,8 @@
         </div>
       </div>
 
-      <!-- Picker -->
       <div>
-        <div class="picker-label">Kies je model <span>— <a href="#specs" style="color:var(--muted);text-decoration:underline">welke maat past bij mij?</a></span></div>
+        <div class="picker-label">Kies je model <span>— <a href="#vergelijking" style="color:var(--muted);text-decoration:underline">welk model past bij mij?</a></span></div>
         <div class="picker-row">
           <button class="pick" data-size="Single 40" data-price="329" data-was="349" data-liters="40" data-persons="2–3">
             <span class="sz">Pro 40 Single</span>
@@ -343,9 +350,18 @@
             <span class="pr">€449</span>
           </button>
         </div>
+        <div class="zone-explain">
+          <div class="zone-block" id="explain-single">
+            <div class="zone-name">Single zone</div>
+            <div class="zone-desc">Één temperatuur voor de hele koelbox. Koelen óf vriezen — niet tegelijk.</div>
+          </div>
+          <div class="zone-block active" id="explain-dual">
+            <div class="zone-name">Dual zone</div>
+            <div class="zone-desc">Twee onafhankelijke zones. Links koelen op 4°C, rechts vriezen op −20°C — tegelijk.</div>
+          </div>
+        </div>
       </div>
 
-      <!-- Price -->
       <div>
         <div class="price-block">
           <span class="price">€<span id="price-val">379</span></span>
@@ -355,27 +371,25 @@
         <div class="price-sub">Inclusief btw · gratis verzending · of 3× €<span id="klarna-val">126,33</span> via Klarna</div>
       </div>
 
-      <!-- Benefits -->
       <div class="benefits">
         <div class="benefit">
           <svg class="benefit-check" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="#D6522B"/><path d="M5 9l3 3 5-6" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span><strong>Twee zones.</strong> Links koelen op 4°C, rechts vriezen tot −20°C — tegelijk.</span>
+          <span><strong>Twee zones.</strong> Links 4°C koelen, rechts −20°C vriezen — tegelijk en onafhankelijk.</span>
         </div>
         <div class="benefit">
           <svg class="benefit-check" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="#D6522B"/><path d="M5 9l3 3 5-6" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span><strong>12V, 24V én 230V.</strong> Alle kabels zitten gewoon in de doos.</span>
+          <span><strong>Werkt ook zonder netstroom.</strong> Powerpack-compatibel voor tot 24u off-grid koeling.</span>
         </div>
         <div class="benefit">
           <svg class="benefit-check" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="#D6522B"/><path d="M5 9l3 3 5-6" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span><strong>Onder 45 dB.</strong> VarioSpeed-compressor past zichzelf aan.</span>
+          <span><strong>12V, 24V én 230V.</strong> Alle kabels zitten in de doos. Geen extra accessoires nodig.</span>
         </div>
         <div class="benefit">
           <svg class="benefit-check" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="#D6522B"/><path d="M5 9l3 3 5-6" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span><strong>App-bediening.</strong> Zet 'm koud voor je instapt.</span>
+          <span><strong>Stiller dan &lt;45 dB.</strong> VarioSpeed-compressor past z'n toerental aan — ook 's nachts rustig.</span>
         </div>
       </div>
 
-      <!-- CTA -->
       <div style="display:flex;flex-direction:column;gap:12px">
         <div class="cta-row">
           <div class="qty">
@@ -397,12 +411,16 @@
             2+1 jaar garantie
           </span>
           <span class="trust-item">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2"/></svg>
             30 dagen retour
           </span>
           <span class="trust-item">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M3 7h13l5 5v5h-2a3 3 0 01-6 0H9a3 3 0 01-6 0V7z" stroke="currentColor" stroke-width="1.6"/></svg>
             Gratis verzending
+          </span>
+          <span class="trust-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 8v4l2.5 2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            Direct van de maker
           </span>
         </div>
       </div>
@@ -417,80 +435,250 @@
     <p class="section-sub">Alles wat je nodig hebt om direct te beginnen — zonder iets bij te bestellen.</p>
     <div class="inbox-grid">
       <div class="inbox-item">
-        <div class="inbox-img"><img src="hyckes/project/uploads/4.png" alt="Koelbox"></div>
+        <div class="inbox-img"><img src="Productfoto's/HyCooler Pro 40 Dual zone/dual40_3d_right.png" alt="Koelbox"></div>
         <div class="inbox-name">HyCooler Pro 40 Dual</div>
         <div class="inbox-desc">Compressor-koelbox, 39L</div>
       </div>
       <div class="inbox-item">
-        <div class="inbox-img"><img src="hyckes/project/uploads/10.png" alt="Kabel"></div>
+        <div class="inbox-img" style="font-size:13px;color:var(--muted)">12/24V</div>
         <div class="inbox-name">12/24V auto-kabel</div>
         <div class="inbox-desc">3 meter, sigarettenaansteker</div>
       </div>
       <div class="inbox-item">
-        <div class="inbox-img" style="display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--muted)">230V</div>
+        <div class="inbox-img" style="font-size:13px;color:var(--muted)">230V</div>
         <div class="inbox-name">230V adapter</div>
-        <div class="inbox-desc">Stopcontact thuis of camping</div>
+        <div class="inbox-desc">Stopcontact of camping</div>
       </div>
       <div class="inbox-item">
-        <div class="inbox-img" style="display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--muted)">snijplank</div>
+        <div class="inbox-img"><img src="Productfoto's/HyCooler Pro 40 Dual zone/dual40_top_cuttingboard.png" alt="Snijplank"></div>
         <div class="inbox-name">Afneembare snijplank</div>
         <div class="inbox-desc">Met flessenopener</div>
       </div>
       <div class="inbox-item">
-        <div class="inbox-img" style="display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--muted)">gids</div>
+        <div class="inbox-img" style="font-size:13px;color:var(--muted)">NL/EN/DE</div>
         <div class="inbox-name">Quick-start gids</div>
-        <div class="inbox-desc">NL · EN · DE</div>
+        <div class="inbox-desc">Setup in 2 minuten</div>
       </div>
     </div>
   </section>
 
   <hr class="divider">
 
-  <!-- ═══════════ FEATURES (wisselende rijen) ═══════════ -->
+  <!-- ═══════════ OFF-GRID ═══════════ -->
   <section class="section">
+    <h2 class="section-title">Koelen zonder netstroom</h2>
+    <p class="section-sub">Op de camping, in de camper of op de boot — met de Powerpack en Solar Panel koelt de Pro 40 Dual Zone tot 24 uur zonder stopcontact.</p>
 
-    <div class="feat-row">
-      <div class="feat-img"><img src="hyckes/project/uploads/Koelen en vriezen tot -20.png" alt="Dual zone"></div>
+    <div class="offgrid" style="margin-top:32px">
+      <div class="offgrid-head">
+        <div>
+          <h3 style="margin-bottom:12px">Zo werkt het off-grid systeem</h3>
+          <p>De HyCooler Powerpack is een oplaadbare accu die direct aan de onderkant van de koelbox klikt. Het Solar Panel laadt de Powerpack op via zonlicht. Die energie gebruikt de koelbox om te koelen — ook als er geen auto of stroom aanwezig is.</p>
+        </div>
+        <div>
+          <p style="margin-bottom:12px">Praktijkvoorbeeld: met een volle Powerpack koelt de Pro 40 Dual Zone gemiddeld <strong>18–24 uur</strong> door op 5°C, ook als de auto uitstaat. Met Solar Panel erbij verleng je dat onbeperkt bij voldoende zon.</p>
+          <p>Ideaal voor: wildkamperen, zeilweekend, festival zonder stroom, lange rit met tussenstops.</p>
+        </div>
+      </div>
+
+      <div class="offgrid-flow">
+        <div class="offgrid-step">
+          <div class="step-icon">☀️</div>
+          <div class="step-name">Solar Panel 100W</div>
+          <div class="step-desc">Laadt de Powerpack op via zonlicht — 5–7 uur voor een volle accu</div>
+        </div>
+        <div class="offgrid-arrow">→</div>
+        <div class="offgrid-step">
+          <div class="step-icon">🔋</div>
+          <div class="step-name">Powerpack 173Wh</div>
+          <div class="step-desc">Oplaadbare accu · klikt onder de koelbox · 18–24u autonomie</div>
+        </div>
+        <div class="offgrid-arrow">→</div>
+        <div class="offgrid-step">
+          <div class="step-icon">❄️</div>
+          <div class="step-name">HyCooler Pro</div>
+          <div class="step-desc">Koelt tot −20°C zonder netstroom · Go en Pro series</div>
+        </div>
+      </div>
+
+      <div class="compat-note">
+        <div class="compat-yes">
+          <strong>✓ Powerpack-compatibel</strong>
+          HyCooler Go serie (Go 18) · HyCooler Pro serie (Pro 40, 50, 60 en alle Dual Zone modellen)
+        </div>
+        <div class="compat-no">
+          <strong>✗ Niet compatibel met Powerpack</strong>
+          HyCooler Life serie (Life 30, Life 40, Life 40 Dual Zone) — deze modellen werken alleen op netstroom of 12/24V.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ═══════════ MODEL VERGELIJKING ═══════════ -->
+  <section class="section" id="vergelijking">
+    <h2 class="section-title">Welk model past bij jou?</h2>
+    <p class="section-sub">De HyCooler-lijn bestaat uit drie series. Elk voor een ander gebruik, budget en situatie.</p>
+
+    <div class="model-grid">
+      <!-- Go 18 -->
+      <div class="model-col">
+        <div class="model-img">
+          <img src="Productfoto's/HyCooler Go 18/go18_3d_closed.png" alt="HyCooler Go 18">
+        </div>
+        <div>
+          <div class="model-name">HyCooler Go 18</div>
+          <div class="model-tagline" style="margin-top:6px">Compact, licht, voor in de auto. Ideaal voor dagtrips en weekendjes.</div>
+        </div>
+        <div class="model-specs">
+          <div class="model-spec-row"><span class="sk">Inhoud</span><span class="sv">18L</span></div>
+          <div class="model-spec-row"><span class="sk">Dual zone</span><span class="sv check-no">—</span></div>
+          <div class="model-spec-row"><span class="sk">Powerpack</span><span class="sv check-yes">✓ compatibel</span></div>
+          <div class="model-spec-row"><span class="sk">Aansluiting</span><span class="sv">12V / 24V</span></div>
+          <div class="model-spec-row"><span class="sk">Doelgroep</span><span class="sv">Auto · dagtrip</span></div>
+          <div class="model-spec-row"><span class="sk">Prijs</span><span class="sv">v.a. €269</span></div>
+        </div>
+        <a href="#" class="model-cta">Bekijk Go serie →</a>
+      </div>
+
+      <!-- Pro 40 Dual — highlight -->
+      <div class="model-col highlight">
+        <div class="model-img">
+          <img src="Productfoto's/HyCooler Pro 40 Dual zone/dual40_3d_right.png" alt="HyCooler Pro 40 Dual Zone">
+        </div>
+        <div>
+          <div class="model-name">HyCooler Pro 40 Dual Zone</div>
+          <div class="model-tagline" style="margin-top:6px">Koelen én vriezen. Voor campers, caravans en boten tot 4 personen.</div>
+        </div>
+        <div class="model-specs">
+          <div class="model-spec-row"><span class="sk">Inhoud</span><span class="sv">39L (29 + 10)</span></div>
+          <div class="model-spec-row"><span class="sk">Dual zone</span><span class="sv check-yes">✓ ja</span></div>
+          <div class="model-spec-row"><span class="sk">Powerpack</span><span class="sv check-yes">✓ compatibel</span></div>
+          <div class="model-spec-row"><span class="sk">Aansluiting</span><span class="sv">12V / 24V / 230V</span></div>
+          <div class="model-spec-row"><span class="sk">Doelgroep</span><span class="sv">Camper · boot · auto</span></div>
+          <div class="model-spec-row"><span class="sk">Prijs</span><span class="sv">€379</span></div>
+        </div>
+        <a href="#" class="model-cta primary">Je huidige keuze</a>
+      </div>
+
+      <!-- Life 40 -->
+      <div class="model-col">
+        <div class="model-img" style="background:var(--paper);border-radius:10px;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--muted)">
+          Life 40
+        </div>
+        <div>
+          <div class="model-name">HyCooler Life 40</div>
+          <div class="model-tagline" style="margin-top:6px">Thuis, camping met stroom of caravan met vaste aansluiting. Groot formaat, scherpe prijs.</div>
+        </div>
+        <div class="model-specs">
+          <div class="model-spec-row"><span class="sk">Inhoud</span><span class="sv">40L</span></div>
+          <div class="model-spec-row"><span class="sk">Dual zone</span><span class="sv">Ook verkrijgbaar</span></div>
+          <div class="model-spec-row"><span class="sk">Powerpack</span><span class="sv check-no">✗ niet compatibel</span></div>
+          <div class="model-spec-row"><span class="sk">Aansluiting</span><span class="sv">12V / 24V / 230V</span></div>
+          <div class="model-spec-row"><span class="sk">Doelgroep</span><span class="sv">Camping · thuis</span></div>
+          <div class="model-spec-row"><span class="sk">Prijs</span><span class="sv">v.a. €299</span></div>
+        </div>
+        <a href="#" class="model-cta">Bekijk Life serie →</a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ═══════════ FEATURES ═══════════ -->
+  <section class="section">
+    <h2 class="section-title" style="margin-bottom:0">Wat heb je er écht aan?</h2>
+
+    <div class="feat-row" style="border-top:none">
+      <div class="feat-img">
+        <img src="Productfoto's/HyCooler Pro 40 Dual zone/dual40_top_open_left_filled.png" alt="Dual zone koelen">
+      </div>
       <div class="feat-text">
         <span class="feat-badge">Dual zone</span>
         <h3>Vlees bevroren. Drankjes koud. Tegelijk.</h3>
-        <p>De tussenwand houdt de twee zones op aparte temperaturen. Links houd je je verse boodschappen op 4°C, rechts vries je vlees of ijs in op −20°C. Geen schotjes verplaatsen, geen keuzes maken.</p>
+        <p>De tussenwand scheidt de twee zones volledig. Links houd je verse boodschappen op 4°C, rechts vries je vlees, vis of ijs in op −20°C. Onafhankelijk instelbaar — je hoeft nergens voor te kiezen.</p>
+        <div class="feat-detail">
+          <div class="feat-detail-row">
+            <svg width="15" height="15" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="#D6522B"/><path d="M5 9l3 3 5-6" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Koelvak links: 29 liter · instelbaar van 0°C tot +20°C
+          </div>
+          <div class="feat-detail-row">
+            <svg width="15" height="15" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="#D6522B"/><path d="M5 9l3 3 5-6" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Vriesvak rechts: 10 liter · instelbaar van −20°C tot 0°C
+          </div>
+        </div>
       </div>
     </div>
 
     <div class="feat-row flip">
-      <div class="feat-img"><img src="hyckes/project/uploads/2.png" alt="VarioSpeed compressor"></div>
+      <div class="feat-img">
+        <img src="Productfoto's/HyCooler Pro 40 Dual zone/dual40_left_open.png" alt="VarioSpeed">
+      </div>
       <div class="feat-text">
-        <span class="feat-badge">VarioSpeed</span>
-        <h3>Stil genoeg om naast je bed te zetten.</h3>
-        <p>De VarioSpeed-compressor past z'n toerental aan op de situatie — hij klikt niet continu aan en uit. Dat maakt 'm stiller én zuiniger: tot 50% minder stroomverbruik vergeleken met een vaste compressor.</p>
+        <span class="feat-badge">VarioSpeed compressor</span>
+        <h3>Tot 50% minder stroom. Stil genoeg voor naast je bed.</h3>
+        <p>De variabele compressor past z'n toerental aan op de situatie — hij clikt niet continu aan en uit. Dat scheelt stroom op je accu én geluid in de nacht. Gemiddeld verbruik: <strong>0,25 kWh per 24u</strong>.</p>
+        <div class="feat-detail">
+          <div class="feat-detail-row">
+            <svg width="15" height="15" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="#D6522B"/><path d="M5 9l3 3 5-6" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            &lt; 45 dB geluidsproductie — stiller dan een koelkast thuis
+          </div>
+          <div class="feat-detail-row">
+            <svg width="15" height="15" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="#D6522B"/><path d="M5 9l3 3 5-6" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Op 12V ±1,2 Ah/u — 100Ah accu houdt 3+ dagen vol
+          </div>
+        </div>
       </div>
     </div>
 
     <div class="feat-row">
-      <div class="feat-img"><img src="hyckes/project/uploads/9.png" alt="App bediening"></div>
+      <div class="feat-img">
+        <img src="Productfoto's/HyCooler Pro 40 Dual zone/dual40_3d_right_open1.png" alt="App bediening">
+      </div>
       <div class="feat-text">
-        <span class="feat-badge">App-bediening</span>
-        <h3>Zet 'm koud voor je instapt.</h3>
-        <p>Via Bluetooth bedien je de koelbox vanuit de HyCooler-app. Stel de temperatuur in, schakel de eco-nachtmodus aan, of check hoeveel stroom er nog verbruikt wordt — allemaal van je bank of de auto.</p>
+        <span class="feat-badge">App-bediening · Accubeveiliging</span>
+        <h3>Zet 'm koud voor je instapt. Accu blijft heel.</h3>
+        <p>Via de HyCooler-app stel je de temperatuur in, activeer je de eco-nachtmodus of check je het stroomverbruik — vanuit de auto of thuis op de bank. De ingebouwde accubeveiliging schakelt de koelbox op tijd uit zodat je auto de volgende ochtend gewoon start.</p>
+        <div class="feat-detail">
+          <div class="feat-detail-row">
+            <svg width="15" height="15" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="#D6522B"/><path d="M5 9l3 3 5-6" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Bluetooth-bediening via HyCooler app (iOS & Android)
+          </div>
+          <div class="feat-detail-row">
+            <svg width="15" height="15" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="#D6522B"/><path d="M5 9l3 3 5-6" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            3 accubeveiligingsniveaus: low / medium / high
+          </div>
+        </div>
       </div>
     </div>
 
     <div class="feat-row flip">
-      <div class="feat-img"><img src="hyckes/project/uploads/7.png" alt="Omkeerbaar deksel"></div>
+      <div class="feat-img">
+        <img src="Productfoto's/HyCooler Pro 40 Dual zone/dual40_3d_left.png" alt="Bouwkwaliteit">
+      </div>
       <div class="feat-text">
-        <span class="feat-badge">Slimme details</span>
-        <h3>Gebouwd voor hoe jij 'm gebruikt.</h3>
-        <p>Het deksel is omkeerbaar — open van links, rechts of achter, afhankelijk van hoe de koelbox staat. Inclusief interieurlicht, afneembare snijplank met flessenopener, afvoerplug, USB-oplaadpoort en ingebouwde accubeveiliging.</p>
+        <span class="feat-badge">Bouwkwaliteit · Garantie</span>
+        <h3>Gemaakt om jarenlang mee te gaan — direct van de maker.</h3>
+        <p>Hyckes ontwerpt en verkoopt rechtstreeks. Geen retailer ertussen, geen servicedealers. Als er iets is, bel je ons direct. We lossen het op binnen 24u. Dat is de reden dat we 2+1 jaar garantie geven: we staan er zelf voor.</p>
+        <div class="feat-detail">
+          <div class="feat-detail-row">
+            <svg width="15" height="15" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="#D6522B"/><path d="M5 9l3 3 5-6" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            2+1 jaar garantie · 30 dagen op proef · gratis retour
+          </div>
+          <div class="feat-detail-row">
+            <svg width="15" height="15" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="#D6522B"/><path d="M5 9l3 3 5-6" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            R600a koudemiddel · ECE R10 gecertificeerd
+          </div>
+        </div>
       </div>
     </div>
-
   </section>
 
   <hr class="divider">
 
   <!-- ═══════════ SPECS ═══════════ -->
-  <section class="section" id="specs">
+  <section class="section">
     <h2 class="section-title">Specificaties</h2>
     <p class="section-sub">HyCooler Pro 40 Dual Zone — alle technische details.</p>
     <div class="specs-grid">
@@ -507,10 +695,10 @@
         <h4>Prestatie & stroom</h4>
         <div class="spec-row"><span class="spec-k">Temperatuurbereik</span><span class="spec-v">−20 tot +20°C</span></div>
         <div class="spec-row"><span class="spec-k">Vermogen</span><span class="spec-v">60W</span></div>
+        <div class="spec-row"><span class="spec-k">Gemiddeld verbruik</span><span class="spec-v">±0,25 kWh/24u</span></div>
         <div class="spec-row"><span class="spec-k">Geluidsniveau</span><span class="spec-v">&lt; 45 dB</span></div>
         <div class="spec-row"><span class="spec-k">Aansluiting</span><span class="spec-v">12V / 24V / 230V</span></div>
         <div class="spec-row"><span class="spec-k">Koudemiddel</span><span class="spec-v">R600a (natuurlijk)</span></div>
-        <div class="spec-row"><span class="spec-k">Certificering</span><span class="spec-v">ECE R10</span></div>
       </div>
     </div>
   </section>
@@ -534,23 +722,23 @@
         </div>
       </div>
       <div style="font-size:14px;color:var(--muted);line-height:1.7">
-        <p>Hyckes werkt uitsluitend met <strong style="color:var(--ink)">geverifieerde reviews</strong> via Kiyoh. Alleen klanten die de koelbox echt hebben gekocht en ontvangen, kunnen een review achterlaten.</p>
-        <a href="#" style="color:var(--orange);font-weight:600;font-size:13px;margin-top:12px;display:inline-block">Lees alle 23 reviews →</a>
+        <p>Hyckes werkt met <strong>geverifieerde reviews</strong> via Kiyoh. Alleen kopers die de koelbox hebben ontvangen, kunnen een beoordeling achterlaten.</p>
+        <a href="#" style="color:var(--orange);font-weight:600;font-size:13px;margin-top:12px;display:inline-block">Alle 23 reviews lezen →</a>
       </div>
     </div>
     <div class="rev-list">
       <div class="rev">
-        <div class="rev-top"><span class="rev-name">Martijn, 47</span><span>3 weken geleden · camper</span></div>
+        <div class="rev-top"><span class="rev-name">Martijn, 47 — camper</span><span>3 weken geleden</span></div>
         <div class="rev-stars">★★★★★</div>
         <p>Eindelijk een koelbox die óók echt vriest. Ijs blijft bevroren op een camping van 32°C. App werkt zoals het moet. Prijs-kwaliteit top.</p>
       </div>
       <div class="rev">
-        <div class="rev-top"><span class="rev-name">Linda, 38</span><span>1 maand geleden · boot</span></div>
+        <div class="rev-top"><span class="rev-name">Linda, 38 — boot</span><span>1 maand geleden</span></div>
         <div class="rev-stars">★★★★★</div>
         <p>Stil. Dát was voor ons het belangrijkste. In de kajuit hoor je 'm niet. Powerpack werkt goed voor een weekend zonder wal.</p>
       </div>
       <div class="rev">
-        <div class="rev-top"><span class="rev-name">Koen, 52</span><span>2 maanden geleden · auto</span></div>
+        <div class="rev-top"><span class="rev-name">Koen, 52 — auto</span><span>2 maanden geleden</span></div>
         <div class="rev-stars">★★★★☆</div>
         <p>Gekocht voor de roadtrip door Frankrijk. Werkt perfect, enige minpunt: kabel 12V kon iets langer. Verder top service van Hyckes zelf.</p>
       </div>
@@ -565,24 +753,32 @@
     <p class="section-sub">Staat je vraag er niet bij? Mail <a href="mailto:service@hyckes.com" style="color:var(--orange)">service@hyckes.com</a> — we reageren dezelfde dag.</p>
     <div class="faq">
       <details open>
-        <summary>Werkt deze koelbox ook bij 35°C+ op een Zuid-Europese camping?</summary>
-        <div class="ans">Ja. De VarioSpeed-compressor is getest tot 43°C omgevingstemperatuur. Bij hoge buitentemperaturen draait de compressor wat actiever, maar de gewenste binnentemperatuur wordt gehaald. Start de koelbox thuis al op via de app.</div>
+        <summary>Hoe lang koelt de koelbox zonder stroom met de Powerpack?</summary>
+        <div class="ans">Gemiddeld <strong>18–24 uur</strong> bij 5°C koelzone en 20°C buitentemperatuur. Dit is afhankelijk van hoe vaak de deksel open gaat en de buitentemperatuur. Met het Solar Panel (100W) laad je de Powerpack overdag op, waardoor je in theorie onbeperkt kunt koelen bij voldoende zon.</div>
       </details>
       <details>
-        <summary>Hoeveel stroom verbruikt de koelbox per dag?</summary>
-        <div class="ans">Gemiddeld <strong>0,25 kWh per 24u</strong> bij 20°C buiten en 5°C binnen. Op 12V is dat circa 1,2 Ah per uur — een 100Ah camper-accu houdt het ruim 3 dagen vol.</div>
+        <summary>Werkt de Powerpack ook met de Life serie?</summary>
+        <div class="ans">Nee. De Powerpack is <strong>uitsluitend compatibel met de Go serie en de Pro serie</strong>. De Life serie (Life 30, Life 40, Life 40 Dual Zone) werkt alleen op 12V, 24V of 230V netstroom. Dit staat ook duidelijk in de productspecificaties.</div>
+      </details>
+      <details>
+        <summary>Kan ik het zonnepaneel direct op de koelbox aansluiten?</summary>
+        <div class="ans">Nee. Het Solar Panel laadt <strong>uitsluitend de Powerpack op</strong>, niet de koelbox direct. De juiste volgorde is altijd: <strong>Solar Panel → Powerpack → koelbox</strong>. Zonder Powerpack werkt het Solar Panel niet als voeding voor de koelbox.</div>
+      </details>
+      <details>
+        <summary>Werkt deze koelbox ook bij 35°C+ buiten, bijvoorbeeld in Zuid-Europa?</summary>
+        <div class="ans">Ja. De VarioSpeed-compressor is getest tot 43°C omgevingstemperatuur. De koelbox haalt de ingestelde temperatuur ook in extreme hitte — de compressor draait dan wel wat actiever. Tip: start de koelbox thuis op via de app voor je vertrekt, zodat hij al op temperatuur is als je inpakt.</div>
       </details>
       <details>
         <summary>Wat is het verschil tussen Single Zone en Dual Zone?</summary>
-        <div class="ans">Bij <strong>Single Zone</strong> is de hele koelbox één temperatuur. Bij <strong>Dual Zone</strong> kun je links koelen én rechts vriezen, tegelijk en onafhankelijk van elkaar. Dual is logisch als je drank én diepvries meeneemt; Single als je alleen koelt.</div>
+        <div class="ans"><strong>Single Zone:</strong> de hele koelbox heeft één temperatuur — je koelt óf vriest, maar niet tegelijk. <strong>Dual Zone:</strong> twee onafhankelijke compartimenten. Links instelbaar van 0 tot +20°C, rechts van −20 tot 0°C — tegelijk en op verschillende temperaturen. Dual is de logische keuze als je zowel vers voedsel als diepvriesproducten meeneemt.</div>
       </details>
       <details>
-        <summary>Kan ik de koelbox laten draaien als de auto uit staat?</summary>
-        <div class="ans">Ja. De ingebouwde accubeveiliging schakelt de koelbox uit voor je accu leeg is. Je kiest zelf het beveiligingsniveau (low/medium/high). Voor langere off-grid sessies raden we de <strong>HyCooler Powerpack</strong> aan.</div>
+        <summary>Hoeveel stroom verbruikt de koelbox per dag?</summary>
+        <div class="ans">Gemiddeld <strong>±0,25 kWh per 24u</strong> bij 20°C buiten en 5°C binnen. Dat is goedkoper dan een huishoudelijke diepvrieskast. Op 12V is dat circa 1,2 Ah per uur — een 100Ah camper-accu houdt het ruim 3 dagen vol zonder bijladen, ook zonder Powerpack.</div>
       </details>
       <details>
-        <summary>Hoe zit het met garantie en retour?</summary>
-        <div class="ans"><strong>30 dagen op proef</strong> — bevalt 'ie niet, we halen 'm gratis op en je krijgt je geld terug. Daarna 2+1 jaar garantie, direct bij ons. Geen tussenhandel, geen gedoe.</div>
+        <summary>Hoe zit het met garantie, retour en service?</summary>
+        <div class="ans">Je hebt <strong>30 dagen bedenktijd</strong> — bevalt 'ie niet, we halen 'm gratis op. Daarna geldt <strong>2+1 jaar garantie</strong>: 2 jaar standaard, +1 jaar extra bij aankoop via hyckes.com. Bij een probleem bel of mail je ons direct — geen dealer, geen wachtrij. We lossen het op binnen 24 uur.</div>
       </details>
     </div>
   </section>
@@ -591,7 +787,7 @@
   <div class="final">
     <div>
       <h2>Klaar om eropuit te gaan?</h2>
-      <p>Besteld voor 16:00, morgen in huis. 30 dagen bedenktijd — werkt 'ie niet zoals je hoopte, dan sturen wij 'm kosteloos op.</p>
+      <p>Besteld voor 16:00, morgen in huis. 30 dagen bedenktijd — werkt 'ie niet zoals je hoopte, dan halen wij 'm kosteloos op.</p>
     </div>
     <div class="final-actions">
       <div class="final-price">€379<small>€399</small></div>
@@ -602,7 +798,6 @@
 
 </div>
 
-<!-- FOOTER -->
 <footer>
   <div class="wrap">
     <div class="foot-grid">
@@ -612,29 +807,15 @@
       </div>
       <div>
         <h5>Producten</h5>
-        <ul>
-          <li><a href="#">HyCooler</a></li>
-          <li><a href="#">HyFridge</a></li>
-          <li><a href="#">HyBreeze</a></li>
-          <li><a href="#">Accessoires</a></li>
-        </ul>
+        <ul><li><a href="#">HyCooler</a></li><li><a href="#">HyFridge</a></li><li><a href="#">HyBreeze</a></li><li><a href="#">Accessoires</a></li></ul>
       </div>
       <div>
         <h5>Support</h5>
-        <ul>
-          <li><a href="#">Contact</a></li>
-          <li><a href="#">Veelgestelde vragen</a></li>
-          <li><a href="#">Garantie</a></li>
-          <li><a href="#">Retour</a></li>
-        </ul>
+        <ul><li><a href="#">Contact</a></li><li><a href="#">Veelgestelde vragen</a></li><li><a href="#">Garantie</a></li><li><a href="#">Retour</a></li></ul>
       </div>
       <div>
         <h5>Bedrijf</h5>
-        <ul>
-          <li><a href="#">Over Hyckes</a></li>
-          <li><a href="#">Dealers</a></li>
-          <li><a href="#">Voorwaarden</a></li>
-        </ul>
+        <ul><li><a href="#">Over Hyckes</a></li><li><a href="#">Dealers</a></li><li><a href="#">Voorwaarden</a></li></ul>
       </div>
     </div>
     <div class="foot-bottom">
@@ -667,6 +848,9 @@
     document.getElementById('price-was').textContent = d.was;
     document.getElementById('price-save').textContent = +d.was - +d.price;
     document.getElementById('klarna-val').textContent = (+d.price / 3).toFixed(2).replace('.', ',');
+    const isSingle = d.size.toLowerCase().includes('single');
+    document.getElementById('explain-single').classList.toggle('active', isSingle);
+    document.getElementById('explain-dual').classList.toggle('active', !isSingle);
   }
   picks.forEach(b => b.addEventListener('click', () => applyModel(b)));
   applyModel(document.querySelector('.pick.on'));
