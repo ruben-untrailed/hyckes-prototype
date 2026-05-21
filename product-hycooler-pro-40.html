@@ -3,13 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>HyCooler Pro 40 Dual Zone — Compressor koelbox | Hyckes</title>
+<title>HyCooler Pro 40 Dual zone — Compressor koelbox | Hyckes</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
     --orange: #D6522B;
+    --orange-light: #FEF0EA;
     --ink:    #0E0E0E;
     --muted:  #6B6B6B;
     --paper:  #F6F3EE;
@@ -52,7 +53,9 @@
 
   /* ZONE BLOCKS AS TOGGLE */
   .zone-block { cursor: pointer; user-select: none; }
-  .zone-block:not(.active):hover { border-color: var(--muted); }
+  .zone-block:not(.active):hover { border-color: var(--orange); }
+  .zone-block.active { border-color: var(--orange) !important; background: var(--orange-light) !important; }
+  .zone-block.active .zone-name { color: var(--orange) !important; }
 
   /* UPSELL */
   .upsell { border: 1.5px solid var(--line); border-radius: 12px; overflow: hidden; }
@@ -171,21 +174,46 @@
   @media (max-width: 700px) { .inbox-grid { grid-template-columns: repeat(2, 1fr); } }
 
   /* OFF-GRID SECTION */
-  .offgrid { background: var(--paper); border-radius: 18px; padding: 48px; }
+  .offgrid { background: var(--ink); border-radius: 18px; padding: 48px; color: var(--white); }
   .offgrid-head { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; margin-bottom: 40px; }
-  .offgrid-head p { font-size: 15px; }
+  .offgrid-head h3 { color: var(--white); }
+  .offgrid-head p { font-size: 15px; color: rgba(255,255,255,0.65); }
   .offgrid-flow { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 0; align-items: center; }
-  .offgrid-step { background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: 24px 20px; text-align: center; }
+  .offgrid-step { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.13); border-radius: 14px; padding: 24px 20px; text-align: center; }
   .offgrid-step .step-icon { font-size: 28px; margin-bottom: 8px; }
-  .offgrid-step .step-name { font-family: 'Archivo'; font-weight: 700; font-size: 15px; margin-bottom: 4px; }
-  .offgrid-step .step-desc { font-size: 13px; color: var(--muted); line-height: 1.4; }
-  .offgrid-arrow { font-size: 24px; color: var(--muted); text-align: center; padding: 0 12px; flex-shrink: 0; }
+  .offgrid-step .step-name { font-family: 'Archivo'; font-weight: 700; font-size: 15px; margin-bottom: 4px; color: var(--white); }
+  .offgrid-step .step-desc { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.4; }
+  .offgrid-arrow { font-size: 24px; color: var(--orange); text-align: center; padding: 0 12px; flex-shrink: 0; }
   .compat-note { margin-top: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  .compat-yes { background: #F0FDF4; border: 1px solid #2E7D3222; border-radius: 10px; padding: 14px 16px; font-size: 13.5px; }
-  .compat-no  { background: #FFF8F5; border: 1px solid #D6522B22; border-radius: 10px; padding: 14px 16px; font-size: 13.5px; }
-  .compat-yes strong { color: var(--good); font-weight: 700; display: block; margin-bottom: 3px; }
-  .compat-no  strong { color: var(--orange); font-weight: 700; display: block; margin-bottom: 3px; }
+  .compat-yes { background: rgba(46,154,67,0.15); border: 1px solid rgba(46,154,67,0.3); border-radius: 10px; padding: 14px 16px; font-size: 13.5px; color: rgba(255,255,255,0.8); }
+  .compat-no  { background: rgba(214,82,43,0.15); border: 1px solid rgba(214,82,43,0.3); border-radius: 10px; padding: 14px 16px; font-size: 13.5px; color: rgba(255,255,255,0.8); }
+  .compat-yes strong { color: #6EE08A; font-weight: 700; display: block; margin-bottom: 3px; }
+  .compat-no  strong { color: #F0845A; font-weight: 700; display: block; margin-bottom: 3px; }
   @media (max-width: 820px) { .offgrid { padding: 28px; } .offgrid-head { grid-template-columns: 1fr; gap: 20px; } .offgrid-flow { grid-template-columns: 1fr; } .offgrid-arrow { transform: rotate(90deg); padding: 8px 0; } .compat-note { grid-template-columns: 1fr; } }
+
+  /* FEATURE BADGE */
+  .feat-badge { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; background: var(--orange-light); color: var(--orange); display: inline-block; padding: 3px 8px; border-radius: 4px; }
+
+  /* CAPACITY VIZ */
+  .capacity { background: var(--paper); border-radius: 18px; padding: 40px 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; margin-top: 32px; }
+  .cap-badge { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--orange); margin-bottom: 10px; }
+  .cap-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
+  .cap-stat { background: var(--white); border-radius: 10px; padding: 14px 16px; }
+  .cap-stat-num { font-family: 'Archivo'; font-weight: 800; font-size: 32px; color: var(--orange); line-height: 1; }
+  .cap-stat-unit { font-size: 12px; color: var(--muted); margin-top: 3px; }
+  .cap-rows { display: flex; flex-direction: column; gap: 10px; }
+  .cap-row { background: var(--white); border-radius: 10px; padding: 12px 14px; display: flex; align-items: center; gap: 12px; }
+  .cap-row-label { font-size: 13px; font-weight: 600; width: 110px; flex-shrink: 0; }
+  .cap-bar { flex: 1; display: flex; flex-wrap: wrap; gap: 2.5px; align-content: flex-start; }
+  .cap-sq { width: 10px; height: 10px; background: var(--orange); border-radius: 1.5px; flex-shrink: 0; }
+  .cap-row-count { font-family: 'Archivo'; font-weight: 700; font-size: 15px; width: 28px; text-align: right; flex-shrink: 0; }
+  @media (max-width: 820px) { .capacity { grid-template-columns: 1fr; padding: 28px; gap: 28px; } }
+
+  /* PRO SIZE PICKER (in model comparison) */
+  .pro-sizes { display: flex; gap: 6px; margin: 8px 0; }
+  .pro-sz { padding: 5px 12px; border: 1.5px solid var(--line); border-radius: 6px; background: var(--white); font-size: 12px; font-weight: 700; cursor: pointer; font-family: inherit; transition: all .15s; }
+  .pro-sz:hover { border-color: var(--ink); }
+  .pro-sz.active { background: var(--ink); color: var(--white); border-color: var(--ink); }
 
   /* MODEL COMPARISON */
   .model-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--line); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; margin-top: 40px; }
@@ -340,7 +368,7 @@
     <a href="index.html">Home</a><span class="sep">/</span>
     <a href="#">Koelboxen</a><span class="sep">/</span>
     <a href="#">HyCooler Pro</a><span class="sep">/</span>
-    <span>Pro 40 Dual Zone</span>
+    <span>Pro 40 Dual zone</span>
   </div>
 
   <!-- ═══════════ HERO ═══════════ -->
@@ -349,7 +377,7 @@
     <div class="gallery">
       <div class="gallery-wrap">
         <div class="gallery-main">
-          <img id="main-img" src="Productfoto's/HyCooler Pro 40 Dual zone/dual40_3d_right.png" alt="HyCooler Pro 40 Dual Zone">
+          <img id="main-img" src="Productfoto's/HyCooler Pro 40 Dual zone/dual40_3d_right.png" alt="HyCooler Pro 40 Dual zone">
         </div>
         <button class="gallery-nav prev" id="gallery-prev" aria-label="Vorige foto">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0E0E0E" stroke-width="2.2" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg>
@@ -388,8 +416,8 @@
 
     <div class="buy">
       <div>
-        <span class="product-label">HyCooler Pro · Dual Zone</span>
-        <h1>Pro <span id="h1-size">40</span> Dual Zone</h1>
+        <span class="product-label">HyCooler Pro</span>
+        <h1>HyCooler Pro <span id="h1-size">40 Dual zone</span></h1>
         <p class="product-sub">Koelen én vriezen in één compacte compressor koelbox. Voor 3–4 personen, in de camper, auto of op de boot — ook zonder netstroom.</p>
         <div class="star-row">
           <span class="stars">★★★★★</span>
@@ -405,38 +433,38 @@
 
         <!-- Dual zone (default) -->
         <div class="picker-row" id="picks-dual">
-          <button class="pick on popular" data-size="40 Dual Zone" data-zone="dual" data-price="379" data-was="399" data-liters="39" data-persons="3–4">
+          <button class="pick on popular" data-size="40 Dual zone" data-zone="dual" data-price="379" data-was="399" data-liters="40" data-persons="3–4">
             <span class="sz">Pro 40</span>
-            <span class="info">39L · 3–4 pers.</span>
+            <span class="info">40L · 3–4 pers.</span>
             <span class="pr">€379</span>
           </button>
-          <button class="pick" data-size="50 Dual Zone" data-zone="dual" data-price="449" data-was="479" data-liters="48" data-persons="4+">
+          <button class="pick" data-size="50 Dual zone" data-zone="dual" data-price="449" data-was="479" data-liters="50" data-persons="4+">
             <span class="sz">Pro 50</span>
-            <span class="info">48L · 4+ pers.</span>
+            <span class="info">50L · 4+ pers.</span>
             <span class="pr">€449</span>
           </button>
-          <button class="pick" data-size="75 Dual Zone" data-zone="dual" data-price="599" data-was="649" data-liters="72" data-persons="6+">
+          <button class="pick" data-size="75 Dual zone" data-zone="dual" data-price="599" data-was="649" data-liters="75" data-persons="6+">
             <span class="sz">Pro 75</span>
-            <span class="info">72L · 6+ pers.</span>
+            <span class="info">75L · 6+ pers.</span>
             <span class="pr">€599</span>
           </button>
         </div>
 
         <!-- Single zone (hidden by default) -->
         <div class="picker-row" id="picks-single" style="display:none">
-          <button class="pick on" data-size="40 Single Zone" data-zone="single" data-price="329" data-was="349" data-liters="39" data-persons="2–3">
+          <button class="pick on" data-size="40 Single zone" data-zone="single" data-price="329" data-was="349" data-liters="40" data-persons="2–3">
             <span class="sz">Pro 40</span>
-            <span class="info">39L · 2–3 pers.</span>
+            <span class="info">40L · 2–3 pers.</span>
             <span class="pr">€329</span>
           </button>
-          <button class="pick" data-size="50 Single Zone" data-zone="single" data-price="389" data-was="419" data-liters="49" data-persons="3–4">
+          <button class="pick" data-size="50 Single zone" data-zone="single" data-price="389" data-was="419" data-liters="50" data-persons="3–4">
             <span class="sz">Pro 50</span>
-            <span class="info">49L · 3–4 pers.</span>
+            <span class="info">50L · 3–4 pers.</span>
             <span class="pr">€389</span>
           </button>
-          <button class="pick" data-size="60 Single Zone" data-zone="single" data-price="449" data-was="479" data-liters="59" data-persons="4+">
+          <button class="pick" data-size="60 Single zone" data-zone="single" data-price="449" data-was="479" data-liters="60" data-persons="4+">
             <span class="sz">Pro 60</span>
-            <span class="info">59L · 4+ pers.</span>
+            <span class="info">60L · 4+ pers.</span>
             <span class="pr">€449</span>
           </button>
         </div>
@@ -584,10 +612,57 @@
 
   <hr class="divider">
 
+  <!-- ═══════════ CAPACITEIT ═══════════ -->
+  <section class="section-sm">
+    <h2 class="section-title">Past dit in m'n koelbox?</h2>
+    <p class="section-sub">38 liter klinkt abstract. Dit past er concreet in.</p>
+    <div class="capacity">
+      <div>
+        <div class="cap-badge">Dual zone · 38L totaal</div>
+        <h3 style="margin:12px 0 8px">Wat krijg je er echt in?</h3>
+        <p style="margin-bottom:20px">Op basis van gemiddelde verpakkingsgroottes bij volle benutting van het volume.</p>
+        <div class="cap-stats">
+          <div class="cap-stat">
+            <div class="cap-stat-num">54</div>
+            <div class="cap-stat-unit">blikjes 33cl</div>
+          </div>
+          <div class="cap-stat">
+            <div class="cap-stat-num">22</div>
+            <div class="cap-stat-unit">flessen 500ml</div>
+          </div>
+        </div>
+      </div>
+      <div class="cap-rows">
+        <div class="cap-row" data-count="54">
+          <span class="cap-row-label">Blikjes 33cl</span>
+          <div class="cap-bar"></div>
+          <span class="cap-row-count">54</span>
+        </div>
+        <div class="cap-row" data-count="22">
+          <span class="cap-row-label">Flessen 500ml</span>
+          <div class="cap-bar"></div>
+          <span class="cap-row-count">22</span>
+        </div>
+        <div class="cap-row" data-count="7">
+          <span class="cap-row-label">Flessen 1,5L</span>
+          <div class="cap-bar"></div>
+          <span class="cap-row-count">7</span>
+        </div>
+        <div class="cap-row" data-count="7">
+          <span class="cap-row-label">Wijnflessen</span>
+          <div class="cap-bar"></div>
+          <span class="cap-row-count">7</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
   <!-- ═══════════ SPECS ═══════════ -->
   <section class="section">
     <h2 class="section-title">Specificaties</h2>
-    <p class="section-sub">HyCooler Pro 40 Dual Zone — alle technische details.</p>
+    <p class="section-sub">HyCooler Pro 40 Dual zone — alle technische details.</p>
     <div class="specs-grid">
       <div class="spec-col">
         <h4>Inhoud & afmetingen</h4>
@@ -638,30 +713,35 @@
         <a href="#" class="model-cta">Bekijk Go serie →</a>
       </div>
 
-      <!-- Pro 40 Dual — highlight -->
+      <!-- Pro Dual — highlight with size picker -->
       <div class="model-col highlight">
-        <div class="model-img">
-          <img src="Productfoto's/HyCooler Pro 40 Dual zone/dual40_3d_right.png" alt="HyCooler Pro 40 Dual Zone">
+        <div class="model-img" id="comp-pro-img">
+          <img src="Productfoto's/HyCooler Pro 40 Dual zone/dual40_3d_right.png" alt="HyCooler Pro Dual zone">
         </div>
         <div>
-          <div class="model-name">HyCooler Pro 40 Dual Zone</div>
-          <div class="model-tagline" style="margin-top:6px">Koelen én vriezen. Voor campers, caravans en boten tot 4 personen.</div>
+          <div class="model-name">HyCooler Pro Dual zone</div>
+          <div class="model-tagline" style="margin-top:4px;margin-bottom:8px">Koelen én vriezen. Kies je maat:</div>
+          <div class="pro-sizes">
+            <button class="pro-sz active" data-liters="40" data-price="379" data-persons="3–4" data-img="Productfoto's/HyCooler Pro 40 Dual zone/dual40_3d_right.png">40L</button>
+            <button class="pro-sz" data-liters="50" data-price="449" data-persons="4+" data-img="Productfoto's/HyCooler Pro 50 Dual zone/dual50_3d_right.png">50L</button>
+            <button class="pro-sz" data-liters="75" data-price="599" data-persons="6+" data-img="Productfoto's/HyCooler Pro 75 Dual zone/dual75_3d.png">75L</button>
+          </div>
         </div>
-        <div class="model-specs">
-          <div class="model-spec-row"><span class="sk">Inhoud</span><span class="sv">39L (29 + 10)</span></div>
+        <div class="model-specs" id="comp-pro-specs">
+          <div class="model-spec-row"><span class="sk">Inhoud</span><span class="sv" id="comp-liters">40L</span></div>
           <div class="model-spec-row"><span class="sk">Dual zone</span><span class="sv check-yes">✓ ja</span></div>
           <div class="model-spec-row"><span class="sk">Powerpack</span><span class="sv check-yes">✓ compatibel</span></div>
           <div class="model-spec-row"><span class="sk">Aansluiting</span><span class="sv">12V / 24V / 230V</span></div>
-          <div class="model-spec-row"><span class="sk">Doelgroep</span><span class="sv">Camper · boot · auto</span></div>
-          <div class="model-spec-row"><span class="sk">Prijs</span><span class="sv">€379</span></div>
+          <div class="model-spec-row"><span class="sk">Doelgroep</span><span class="sv" id="comp-persons">Camper · boot · auto</span></div>
+          <div class="model-spec-row"><span class="sk">Prijs</span><span class="sv" id="comp-price">€379</span></div>
         </div>
         <a href="#" class="model-cta primary">Je huidige keuze</a>
       </div>
 
       <!-- Life 40 -->
       <div class="model-col">
-        <div class="model-img" style="background:var(--paper);border-radius:10px;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--muted)">
-          Life 40
+        <div class="model-img">
+          <img src="Productfoto's/HyCooler Life 40 v2024/hycooler_life_40_3d.png" alt="HyCooler Life 40">
         </div>
         <div>
           <div class="model-name">HyCooler Life 40</div>
@@ -780,7 +860,7 @@
   <!-- ═══════════ OFF-GRID ═══════════ -->
   <section class="section">
     <h2 class="section-title">Koelen zonder netstroom</h2>
-    <p class="section-sub">Op de camping, in de camper of op de boot — met de Powerpack en Solar Panel koelt de Pro 40 Dual Zone tot 24 uur zonder stopcontact.</p>
+    <p class="section-sub">Op de camping, in de camper of op de boot — met de Powerpack en Solar Panel koelt de Pro 40 Dual zone tot 24 uur zonder stopcontact.</p>
 
     <div class="offgrid" style="margin-top:32px">
       <div class="offgrid-head">
@@ -789,7 +869,7 @@
           <p>De HyCooler Powerpack is een oplaadbare accu die direct aan de onderkant van de koelbox klikt. Het Solar Panel laadt de Powerpack op via zonlicht. Die energie gebruikt de koelbox om te koelen — ook als er geen auto of stroom aanwezig is.</p>
         </div>
         <div>
-          <p style="margin-bottom:12px">Praktijkvoorbeeld: met een volle Powerpack koelt de Pro 40 Dual Zone gemiddeld <strong>18–24 uur</strong> door op 5°C, ook als de auto uitstaat. Met Solar Panel erbij verleng je dat onbeperkt bij voldoende zon.</p>
+          <p style="margin-bottom:12px">Praktijkvoorbeeld: met een volle Powerpack koelt de Pro 40 Dual zone gemiddeld <strong>18–24 uur</strong> door op 5°C, ook als de auto uitstaat. Met Solar Panel erbij verleng je dat onbeperkt bij voldoende zon.</p>
           <p>Ideaal voor: wildkamperen, zeilweekend, festival zonder stroom, lange rit met tussenstops.</p>
         </div>
       </div>
@@ -817,11 +897,11 @@
       <div class="compat-note">
         <div class="compat-yes">
           <strong>✓ Powerpack-compatibel</strong>
-          HyCooler Go serie (Go 18) · HyCooler Pro serie (Pro 40, 50, 60 en alle Dual Zone modellen)
+          HyCooler Go serie (Go 18) · HyCooler Pro serie (Pro 40, 50, 60 en alle Dual zone modellen)
         </div>
         <div class="compat-no">
           <strong>✗ Niet compatibel met Powerpack</strong>
-          HyCooler Life serie (Life 30, Life 40, Life 40 Dual Zone) — deze modellen werken alleen op netstroom of 12/24V.
+          HyCooler Life serie (Life 30, Life 40, Life 40 Dual zone) — deze modellen werken alleen op netstroom of 12/24V.
         </div>
       </div>
     </div>
@@ -885,7 +965,7 @@
       </details>
       <details>
         <summary>Werkt de Powerpack ook met de Life serie?</summary>
-        <div class="ans">Nee. De Powerpack is <strong>uitsluitend compatibel met de Go serie en de Pro serie</strong>. De Life serie (Life 30, Life 40, Life 40 Dual Zone) werkt alleen op 12V, 24V of 230V netstroom. Dit staat ook duidelijk in de productspecificaties.</div>
+        <div class="ans">Nee. De Powerpack is <strong>uitsluitend compatibel met de Go serie en de Pro serie</strong>. De Life serie (Life 30, Life 40, Life 40 Dual zone) werkt alleen op 12V, 24V of 230V netstroom. Dit staat ook duidelijk in de productspecificaties.</div>
       </details>
       <details>
         <summary>Kan ik het zonnepaneel direct op de koelbox aansluiten?</summary>
@@ -896,8 +976,8 @@
         <div class="ans">Ja. De VarioSpeed-compressor is getest tot 43°C omgevingstemperatuur. De koelbox haalt de ingestelde temperatuur ook in extreme hitte — de compressor draait dan wel wat actiever. Tip: start de koelbox thuis op via de app voor je vertrekt, zodat hij al op temperatuur is als je inpakt.</div>
       </details>
       <details>
-        <summary>Wat is het verschil tussen Single Zone en Dual Zone?</summary>
-        <div class="ans"><strong>Single Zone:</strong> de hele koelbox heeft één temperatuur — je koelt óf vriest, maar niet tegelijk. <strong>Dual Zone:</strong> twee onafhankelijke compartimenten. Links instelbaar van 0 tot +20°C, rechts van −20 tot 0°C — tegelijk en op verschillende temperaturen. Dual is de logische keuze als je zowel vers voedsel als diepvriesproducten meeneemt.</div>
+        <summary>Wat is het verschil tussen Single zone en Dual zone?</summary>
+        <div class="ans"><strong>Single zone:</strong> de hele koelbox heeft één temperatuur — je koelt óf vriest, maar niet tegelijk. <strong>Dual zone:</strong> twee onafhankelijke compartimenten. Links instelbaar van 0 tot +20°C, rechts van −20 tot 0°C — tegelijk en op verschillende temperaturen. Dual is de logische keuze als je zowel vers voedsel als diepvriesproducten meeneemt.</div>
       </details>
       <details>
         <summary>Hoeveel stroom verbruikt de koelbox per dag?</summary>
@@ -955,7 +1035,7 @@
 <!-- STICKY ATC -->
 <div class="sticky-atc" id="sticky-atc">
   <div class="sticky-atc-info">
-    <span class="sticky-atc-name">HyCooler Pro <span id="sticky-size">40 Dual Zone</span></span>
+    <span class="sticky-atc-name">HyCooler Pro <span id="sticky-size">40 Dual zone</span></span>
     <span class="sticky-atc-price">€<span id="sticky-price">379</span></span>
   </div>
   <button class="sticky-atc-btn">In winkelwagen</button>
@@ -1032,6 +1112,24 @@
     const [min, plus] = q.querySelectorAll('button');
     min.onclick  = () => { input.value = Math.max(1, +input.value - 1); };
     plus.onclick = () => { input.value = +input.value + 1; };
+  });
+
+  // Pro comparison size switcher
+  document.querySelectorAll('.pro-sz').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.pro-sz').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('comp-liters').textContent = btn.dataset.liters + 'L';
+      document.getElementById('comp-price').textContent = '€' + btn.dataset.price;
+      const img = document.getElementById('comp-pro-img').querySelector('img');
+      if (img) img.src = btn.dataset.img;
+    });
+  });
+
+  // Capacity bars
+  document.querySelectorAll('.cap-bar').forEach(bar => {
+    const count = +bar.parentElement.dataset.count;
+    bar.innerHTML = Array(count).fill('<span class="cap-sq"></span>').join('');
   });
 
   // Wishlist
