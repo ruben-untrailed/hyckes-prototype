@@ -379,6 +379,18 @@
   .cart-btn-checkout { flex: 1; height: 48px; background: #2E9A43; color: var(--white); border: none; border-radius: 8px; font-family: 'Archivo'; font-weight: 700; font-size: 14px; cursor: pointer; transition: background .15s; }
   .cart-btn-checkout:hover { background: #248534; }
   @media (max-width: 480px) { .cart-panel { width: 100vw; } }
+  .cart-suggestions { padding: 14px 24px 18px; background: var(--paper); border-top: 1px solid var(--line); flex-shrink: 0; }
+  .cart-sugg-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-bottom: 10px; }
+  .cart-sugg-item { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--line); }
+  .cart-sugg-item:last-child { border-bottom: none; }
+  .cart-sugg-img { width: 48px; height: 48px; flex-shrink: 0; border-radius: 8px; background: var(--white); overflow: hidden; }
+  .cart-sugg-img img { width: 100%; height: 100%; object-fit: contain; padding: 4px; }
+  .cart-sugg-body { flex: 1; min-width: 0; }
+  .cart-sugg-name { font-size: 13px; font-weight: 600; color: var(--ink); }
+  .cart-sugg-meta { font-size: 11px; color: var(--muted); margin-top: 1px; }
+  .cart-sugg-price { font-family: 'Archivo'; font-weight: 700; font-size: 13px; color: var(--ink); margin-top: 2px; }
+  .cart-sugg-add { width: 30px; height: 30px; background: var(--orange); color: var(--white); border: none; border-radius: 50%; font-size: 22px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background .15s; }
+  .cart-sugg-add:hover { background: #b8421f; }
 
   /* FOOTER */
   footer { background: var(--ink); color: var(--white); padding: 56px 0 28px; font-size: 14px; }
@@ -532,7 +544,7 @@
     <div class="gallery">
       <div class="gallery-wrap">
         <div class="gallery-main">
-          <img id="main-img" src="Productfoto's/HyCooler Pro 40 Dual zone/dual40_3d_right.png" alt="HyCooler Pro 40 Dual zone">
+          <img id="main-img" src="Productfoto's/HyCooler Pro 40 Dual zone/dual40_front.png" alt="HyCooler Pro 40 Dual zone">
         </div>
         <button class="gallery-nav prev" id="gallery-prev" aria-label="Vorige foto">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0E0E0E" stroke-width="2.2" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg>
@@ -542,11 +554,11 @@
         </button>
       </div>
       <div class="gallery-thumbs">
-        <div class="thumb active" data-src="Productfoto's/HyCooler Pro 40 Dual zone/dual40_3d_right.png">
-          <img src="Productfoto's/HyCooler Pro 40 Dual zone/dual40_3d_right.png" alt="">
-        </div>
-        <div class="thumb" data-src="Productfoto's/HyCooler Pro 40 Dual zone/dual40_front.png">
+        <div class="thumb active" data-src="Productfoto's/HyCooler Pro 40 Dual zone/dual40_front.png">
           <img src="Productfoto's/HyCooler Pro 40 Dual zone/dual40_front.png" alt="">
+        </div>
+        <div class="thumb" data-src="Productfoto's/HyCooler Pro 40 Dual zone/dual40_3d_right.png">
+          <img src="Productfoto's/HyCooler Pro 40 Dual zone/dual40_3d_right.png" alt="">
         </div>
         <div class="thumb" data-src="Productfoto's/HyCooler Pro 40 Dual zone/dual40_top_open.png">
           <img src="Productfoto's/HyCooler Pro 40 Dual zone/dual40_top_open.png" alt="">
@@ -560,11 +572,17 @@
         <div class="thumb" data-src="Productfoto's/HyCooler Pro 40 Dual zone/dual40_top_cuttingboard.png">
           <img src="Productfoto's/HyCooler Pro 40 Dual zone/dual40_top_cuttingboard.png" alt="">
         </div>
+        <div class="thumb" data-src="Productfoto's/AI/PRO DZ 40/8577447422404107726.jpg">
+          <img src="Productfoto's/AI/PRO DZ 40/8577447422404107726.jpg" alt="" style="object-fit:cover;padding:0">
+        </div>
+        <div class="thumb" data-src="Productfoto's/AI/PRO DZ 40/13933144145554959199.jpg">
+          <img src="Productfoto's/AI/PRO DZ 40/13933144145554959199.jpg" alt="" style="object-fit:cover;padding:0">
+        </div>
+        <div class="thumb" data-src="Productfoto's/AI/PRO DZ 40/14397683308849931482.jpg">
+          <img src="Productfoto's/AI/PRO DZ 40/14397683308849931482.jpg" alt="" style="object-fit:cover;padding:0">
+        </div>
         <div class="thumb" data-src="Productfoto's/HyCooler Pro 40 Dual zone/dual40_left_open.png">
           <img src="Productfoto's/HyCooler Pro 40 Dual zone/dual40_left_open.png" alt="">
-        </div>
-        <div class="thumb" data-src="Productfoto's/HyCooler Pro 40 Dual zone/dual40_3d_right_open1.png">
-          <img src="Productfoto's/HyCooler Pro 40 Dual zone/dual40_3d_right_open1.png" alt="">
         </div>
       </div>
     </div>
@@ -733,7 +751,7 @@
     <p class="section-sub">Alles wat je nodig hebt om direct te beginnen — zonder iets bij te bestellen.</p>
     <div class="inbox-grid">
       <div class="inbox-item">
-        <div class="inbox-img"><img src="Productfoto's/HyCooler Pro 40 Dual zone/dual40_3d_right.png" alt="Koelbox"></div>
+        <div class="inbox-img"><img src="Productfoto's/HyCooler Pro 40 Dual zone/dual40_front.png" alt="Koelbox"></div>
         <div class="inbox-name">HyCooler Pro 40 Dual</div>
         <div class="inbox-desc">Compressor-koelbox, 39L</div>
       </div>
@@ -871,13 +889,13 @@
       <!-- Pro Dual — highlight with size picker -->
       <div class="model-col highlight">
         <div class="model-img" id="comp-pro-img">
-          <img src="Productfoto's/HyCooler Pro 40 Dual zone/dual40_3d_right.png" alt="HyCooler Pro Dual zone">
+          <img src="Productfoto's/HyCooler Pro 40 Dual zone/dual40_front.png" alt="HyCooler Pro Dual zone">
         </div>
         <div>
           <div class="model-name">HyCooler Pro Dual zone</div>
           <div class="model-tagline" style="margin-top:4px;margin-bottom:8px">Koelen én vriezen. Kies je maat:</div>
           <div class="pro-sizes">
-            <button class="pro-sz active" data-liters="40" data-price="379" data-persons="3–4" data-img="Productfoto's/HyCooler Pro 40 Dual zone/dual40_3d_right.png">40L</button>
+            <button class="pro-sz active" data-liters="40" data-price="379" data-persons="3–4" data-img="Productfoto's/HyCooler Pro 40 Dual zone/dual40_front.png">40L</button>
             <button class="pro-sz" data-liters="50" data-price="449" data-persons="4+" data-img="Productfoto's/HyCooler Pro 50 Dual zone/dual50_3d_right.png">50L</button>
             <button class="pro-sz" data-liters="75" data-price="599" data-persons="6+" data-img="Productfoto's/HyCooler Pro 75 Dual zone/dual75_3d.png">75L</button>
           </div>
@@ -923,7 +941,7 @@
 
     <div class="feat-row" style="border-top:none">
       <div class="feat-img">
-        <img src="Productfoto's/HyCooler Pro 40 Dual zone/dual40_top_open_left_filled.png" alt="Dual zone koelen">
+        <img src="Productfoto's/AI/PRO DZ 40/8577447422404107726.jpg" alt="Dual zone koelen" style="object-fit:cover;padding:0">
       </div>
       <div class="feat-text">
         <span class="feat-badge">Dual zone</span>
@@ -948,7 +966,7 @@
 
     <div class="feat-row flip">
       <div class="feat-img">
-        <img src="Productfoto's/HyCooler Pro 40 Dual zone/dual40_left_open.png" alt="VarioSpeed">
+        <img src="Productfoto's/AI/PRO DZ 40/13933144145554959199.jpg" alt="Camper" style="object-fit:cover;padding:0">
       </div>
       <div class="feat-text">
         <span class="feat-badge">VarioSpeed · Eco-modus</span>
@@ -990,7 +1008,7 @@
 
     <div class="feat-row flip">
       <div class="feat-img">
-        <img src="Productfoto's/HyCooler Pro 40 Dual zone/dual40_3d_left.png" alt="Bouwkwaliteit">
+        <img src="Productfoto's/AI/PRO DZ 40/14397683308849931482.jpg" alt="Bouwkwaliteit" style="object-fit:cover;padding:0">
       </div>
       <div class="feat-text">
         <span class="feat-badge">Klaar voor gebruik · Ecologisch</span>
@@ -1197,6 +1215,10 @@
       </button>
     </div>
     <div class="cart-items" id="cart-items"></div>
+    <div class="cart-suggestions" id="cart-suggestions" style="display:none">
+      <div class="cart-sugg-title">Maak het compleet</div>
+      <div id="cart-sugg-list"></div>
+    </div>
     <div class="cart-divider"></div>
     <div class="cart-footer">
       <div class="cart-subtotal">
@@ -1312,10 +1334,12 @@
   });
 
   // Cart popup
-  const cartOverlay = document.getElementById('cart-overlay');
-  const cartItemsEl = document.getElementById('cart-items');
-  const cartTotalEl = document.getElementById('cart-total');
-  const navBadgeEl  = document.querySelector('.nav-badge');
+  const cartOverlay   = document.getElementById('cart-overlay');
+  const cartItemsEl   = document.getElementById('cart-items');
+  const cartTotalEl   = document.getElementById('cart-total');
+  const cartSuggsEl   = document.getElementById('cart-suggestions');
+  const cartSuggList  = document.getElementById('cart-sugg-list');
+  const navBadgeEl    = document.querySelector('.nav-badge');
 
   const upsells = [
     { id: 'upsell-powerpack', name: 'HyCooler Powerpack', meta: '173Wh · 1,1 kg', price: 99, img: "Productfoto's/HyCooler Powerpack/powerpack_3d_1.png", discount: '13,4% korting toegepast' },
@@ -1335,6 +1359,28 @@
     </div>`;
   }
 
+  function buildSuggItem(u) {
+    return `<div class="cart-sugg-item" id="sugg-${u.id}">
+      <div class="cart-sugg-img"><img src="${u.img}" alt="${u.name}"></div>
+      <div class="cart-sugg-body">
+        <div class="cart-sugg-name">${u.name}</div>
+        <div class="cart-sugg-meta">${u.meta}</div>
+        <div class="cart-sugg-price">+ €${u.price},-</div>
+      </div>
+      <button class="cart-sugg-add" title="Toevoegen" onclick="addSuggToCart('${u.id}')">+</button>
+    </div>`;
+  }
+
+  function addSuggToCart(uid) {
+    const u = upsells.find(x => x.id === uid);
+    if (!u) return;
+    cartItemsEl.insertAdjacentHTML('beforeend', buildCartItem(u.img, u.name, u.meta, u.price, u.discount, 1));
+    const suggEl = document.getElementById('sugg-' + uid);
+    if (suggEl) suggEl.remove();
+    if (!cartSuggList.children.length) cartSuggsEl.style.display = 'none';
+    recalcCart();
+  }
+
   function recalcCart() {
     let total = 0;
     cartItemsEl.querySelectorAll('.cart-item-price').forEach(el => {
@@ -1348,11 +1394,11 @@
 
   function openCart() {
     const btn = document.querySelector('#picks-dual .pick.on, #picks-single .pick.on');
-    const d   = btn ? btn.dataset : { size: '40 Dual zone', price: '379' };
+    const d   = btn ? btn.dataset : { size: '40 Dual zone', price: '379', liters: '40' };
     const qty = parseInt(document.querySelector('.qty input').value) || 1;
 
     let html = buildCartItem(
-      "Productfoto's/HyCooler Pro 40 Dual zone/dual40_3d_right.png",
+      "Productfoto's/HyCooler Pro 40 Dual zone/dual40_front.png",
       `HyCooler Pro ${d.size}`,
       `${d.liters || '40'}L · compressor koelbox`,
       parseInt(d.price) * qty,
@@ -1368,6 +1414,16 @@
     });
 
     cartItemsEl.innerHTML = html;
+
+    // Build suggestions for unchecked upsells
+    let suggHtml = '';
+    upsells.forEach(u => {
+      const cb = document.getElementById(u.id);
+      if (!cb || !cb.checked) suggHtml += buildSuggItem(u);
+    });
+    cartSuggList.innerHTML = suggHtml;
+    cartSuggsEl.style.display = suggHtml ? 'block' : 'none';
+
     recalcCart();
     cartOverlay.classList.add('open');
     document.body.style.overflow = 'hidden';
