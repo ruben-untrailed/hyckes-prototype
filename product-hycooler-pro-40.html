@@ -248,7 +248,7 @@
   .model-col.highlight .model-spec-row { border-color: rgba(255,255,255,0.1); }
   .model-col.highlight .model-spec-row .sk { color: rgba(255,255,255,0.5); }
   .model-col.highlight .model-spec-row .sv { color: var(--white); }
-  .model-col.highlight .model-img { background: var(--orange-light); }
+  .model-col.highlight .model-img { background: var(--paper); }
   .model-col.highlight .pro-sz { border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.75); }
   .model-col.highlight .pro-sz:hover { border-color: rgba(255,255,255,0.5); }
   .model-col.highlight .pro-sz.active { background: var(--orange); border-color: var(--orange); color: var(--white); }
@@ -391,6 +391,34 @@
   .cart-sugg-price { font-family: 'Archivo'; font-weight: 700; font-size: 13px; color: var(--ink); margin-top: 2px; }
   .cart-sugg-add { width: 30px; height: 30px; background: var(--orange); color: var(--white); border: none; border-radius: 50%; font-size: 22px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background .15s; }
   .cart-sugg-add:hover { background: #b8421f; }
+
+  /* KEUZEHULP */
+  .keuzehulp { background: #111; border-radius: 20px; padding: 52px 48px; display: grid; grid-template-columns: 1fr 1.15fr; gap: 56px; align-items: center; }
+  .kh-label { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--orange); display: block; margin-bottom: 16px; font-family: 'Ubuntu', sans-serif; }
+  .kh-title { font-family: 'Archivo'; font-weight: 800; font-size: clamp(26px, 3vw, 38px); color: var(--white); line-height: 1.1; letter-spacing: -.02em; margin-bottom: 14px; }
+  .kh-title em { color: var(--orange); font-style: normal; }
+  .kh-desc { font-size: 15px; color: rgba(255,255,255,0.55); line-height: 1.55; margin-bottom: 28px; max-width: 340px; }
+  .kh-cta-btn { height: 48px; padding: 0 26px; background: var(--orange); color: var(--white); border: none; border-radius: 10px; font-family: 'Archivo'; font-weight: 700; font-size: 13px; cursor: pointer; letter-spacing: .06em; text-transform: uppercase; transition: background .15s; }
+  .kh-cta-btn:hover { background: #b8421f; }
+  .kh-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 28px; }
+  .kh-step-lbl { font-size: 12px; color: rgba(255,255,255,0.4); margin-bottom: 10px; letter-spacing: .04em; font-family: 'Ubuntu', sans-serif; }
+  .kh-question { font-family: 'Archivo'; font-weight: 700; font-size: 17px; color: var(--white); margin-bottom: 18px; line-height: 1.3; }
+  .kh-options { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin-bottom: 20px; }
+  .kh-opt { background: rgba(255,255,255,0.07); border: 1.5px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 12px 13px; cursor: pointer; display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.8); font-size: 13.5px; font-weight: 500; font-family: inherit; transition: border-color .15s, background .15s; text-align: left; }
+  .kh-opt:hover { border-color: var(--orange); background: rgba(214,82,43,0.12); color: var(--white); }
+  .kh-opt-icon { width: 30px; height: 30px; background: var(--orange); border-radius: 7px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 15px; }
+  .kh-progress-row { display: flex; align-items: center; gap: 10px; font-size: 11px; color: rgba(255,255,255,0.35); }
+  .kh-bar { flex: 1; height: 3px; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden; }
+  .kh-bar-fill { height: 100%; background: var(--orange); border-radius: 2px; transition: width .35s ease; }
+  .kh-result { text-align: center; }
+  .kh-res-label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--orange); margin-bottom: 8px; font-family: 'Ubuntu', sans-serif; }
+  .kh-res-title { font-family: 'Archivo'; font-weight: 800; font-size: 22px; color: var(--white); margin-bottom: 8px; }
+  .kh-res-desc { font-size: 13px; color: rgba(255,255,255,0.55); margin-bottom: 20px; line-height: 1.5; max-width: 280px; margin-inline: auto; }
+  .kh-res-btn { height: 44px; padding: 0 24px; background: var(--orange); color: var(--white); border: none; border-radius: 8px; font-family: 'Archivo'; font-weight: 700; font-size: 14px; cursor: pointer; transition: background .15s; }
+  .kh-res-btn:hover { background: #b8421f; }
+  .kh-restart { background: none; border: none; color: rgba(255,255,255,0.35); font-size: 12px; cursor: pointer; margin-top: 12px; display: block; width: 100%; text-align: center; font-family: inherit; transition: color .15s; }
+  .kh-restart:hover { color: rgba(255,255,255,0.65); }
+  @media (max-width: 820px) { .keuzehulp { grid-template-columns: 1fr; gap: 28px; padding: 32px 24px; } .kh-desc { max-width: 100%; } }
 
   /* FOOTER */
   footer { background: var(--ink); color: var(--white); padding: 56px 0 28px; font-size: 14px; }
@@ -863,7 +891,7 @@
   <!-- ═══════════ MODEL VERGELIJKING ═══════════ -->
   <section class="section" id="vergelijking">
     <h2 class="section-title">Welk model past bij jou?</h2>
-    <p class="section-sub">De HyCooler-lijn bestaat uit drie series. Elk voor een ander gebruik, budget en situatie.</p>
+    <p class="section-sub">De HyCooler-lijn bestaat uit drie series. Elk voor een ander gebruik, budget en situatie. <a href="#keuzehulp-sectie" style="color:var(--orange);text-decoration:underline;white-space:nowrap">Kom je er niet uit? Start de keuzehulp →</a></p>
 
     <div class="model-grid">
       <!-- Go 18 -->
@@ -896,8 +924,8 @@
           <div class="model-tagline" style="margin-top:4px;margin-bottom:8px">Koelen én vriezen. Kies je maat:</div>
           <div class="pro-sizes">
             <button class="pro-sz active" data-liters="40" data-price="379" data-persons="3–4" data-img="Productfoto's/HyCooler Pro 40 Dual zone/dual40_front.png">40L</button>
-            <button class="pro-sz" data-liters="50" data-price="449" data-persons="4+" data-img="Productfoto's/HyCooler Pro 50 Dual zone/dual50_3d_right.png">50L</button>
-            <button class="pro-sz" data-liters="75" data-price="599" data-persons="6+" data-img="Productfoto's/HyCooler Pro 75 Dual zone/dual75_3d.png">75L</button>
+            <button class="pro-sz" data-liters="50" data-price="449" data-persons="4+" data-img="Productfoto's/HyCooler Pro 50 Dual zone/dual50_front.png">50L</button>
+            <button class="pro-sz" data-liters="75" data-price="599" data-persons="6+" data-img="Productfoto's/HyCooler Pro 75 Dual zone/dual75_front.png">75L</button>
           </div>
         </div>
         <div class="model-specs" id="comp-pro-specs">
@@ -930,6 +958,19 @@
         </div>
         <a href="#" class="model-cta">Bekijk Life serie →</a>
       </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ KEUZEHULP ═══════════ -->
+  <section class="section-sm" id="keuzehulp-sectie">
+    <div class="keuzehulp">
+      <div>
+        <span class="kh-label">Keuzehulp</span>
+        <h2 class="kh-title">Niet zeker welk<br>model? <em>In 4 vragen</em><br>weet je het.</h2>
+        <p class="kh-desc">Geen technische tabellen. Wij vragen wat je gaat doen, wij geven je het juiste model.</p>
+        <button class="kh-cta-btn" id="kh-start-btn">START DE KEUZEHULP →</button>
+      </div>
+      <div class="kh-card" id="kh-quiz"></div>
     </div>
   </section>
 
@@ -1441,6 +1482,71 @@
   document.querySelector('.btn-add').addEventListener('click', openCart);
   document.querySelector('.sticky-atc-btn').addEventListener('click', openCart);
   document.querySelector('.btn-final').addEventListener('click', openCart);
+
+  // Keuzehulp quiz
+  const khQuestions = [
+    { step: 'Stap 1 van 4', q: 'Waar ga je je koelbox vooral gebruiken?',
+      opts: [{ icon:'🚗', label:'Auto · roadtrip', val:'auto' }, { icon:'🚐', label:'Camper · caravan', val:'camper' }, { icon:'⛵', label:'Boot · zeilen', val:'boot' }, { icon:'🏠', label:'Festival · thuis', val:'thuis' }] },
+    { step: 'Stap 2 van 4', q: 'Hoeveel personen ga je voorzien?',
+      opts: [{ icon:'👤', label:'1–2 personen', val:'1-2' }, { icon:'👥', label:'3–4 personen', val:'3-4' }, { icon:'👨‍👩‍👧', label:'5+ personen', val:'5+' }, { icon:'❓', label:'Weet ik nog niet', val:'onbekend' }] },
+    { step: 'Stap 3 van 4', q: 'Hoe lang ga je weg?',
+      opts: [{ icon:'☀️', label:'Dagtrip', val:'dag' }, { icon:'🏕️', label:'Weekend', val:'weekend' }, { icon:'🌍', label:'Langere reis', val:'lang' }, { icon:'🔌', label:'Thuis / vaste plek', val:'thuis' }] },
+    { step: 'Stap 4 van 4', q: 'Wil je ook kunnen vriezen?',
+      opts: [{ icon:'🧊', label:'Ja, ook vriezen', val:'ja' }, { icon:'🥤', label:'Nee, alleen koelen', val:'nee' }, { icon:'🤷', label:'Maakt me niet uit', val:'nvt' }, { icon:'❄️', label:'Alleen vriezen', val:'ja' }] }
+  ];
+  const khResults = {
+    go:   { title:'HyCooler Go serie',          desc:'Compact en licht — perfect voor in de auto en dagtrips. Past overal.',             btn:'Bekijk de Go serie' },
+    life: { title:'HyCooler Life serie',         desc:'Groot formaat, scherpe prijs. Ideaal voor camping met stroom of thuis gebruik.',   btn:'Bekijk de Life serie' },
+    pro:  { title:'HyCooler Pro Dual zone',      desc:'Koelen én vriezen in één box. De beste keuze voor camper, boot of langere reizen.', btn:'Bekijk de Pro Dual zone' }
+  };
+  let khAnswers = [], khCurrent = 0;
+
+  function khRecommend() {
+    const [use, , dur, freeze] = khAnswers;
+    if (use === 'auto' && dur === 'dag') return 'go';
+    if (use === 'auto') return 'go';
+    if ((freeze === 'ja') || use === 'camper' || use === 'boot') return 'pro';
+    return 'life';
+  }
+
+  function khRender() {
+    const el = document.getElementById('kh-quiz');
+    if (khCurrent >= khQuestions.length) {
+      const r = khResults[khRecommend()];
+      el.innerHTML = `<div class="kh-result">
+        <div class="kh-res-label">Jouw advies</div>
+        <div class="kh-res-title">${r.title}</div>
+        <div class="kh-res-desc">${r.desc}</div>
+        <button class="kh-res-btn">${r.btn} →</button>
+        <button class="kh-restart" onclick="khAnswers=[];khCurrent=0;khRender()">↩ Opnieuw beginnen</button>
+      </div>
+      <div class="kh-progress-row" style="margin-top:20px">
+        <span>Klaar!</span>
+        <div class="kh-bar"><div class="kh-bar-fill" style="width:100%"></div></div>
+        <span>~0 sec</span>
+      </div>`;
+      return;
+    }
+    const q = khQuestions[khCurrent];
+    const pct = (khCurrent / khQuestions.length) * 100;
+    const sec = (khQuestions.length - khCurrent) * 10;
+    el.innerHTML = `<div class="kh-step-lbl">${q.step}</div>
+      <div class="kh-question">${q.q}</div>
+      <div class="kh-options">${q.opts.map(o =>
+        `<button class="kh-opt" onclick="khAnswers[${khCurrent}]='${o.val}';khCurrent++;khRender()">
+          <span class="kh-opt-icon">${o.icon}</span>${o.label}
+        </button>`).join('')}
+      </div>
+      <div class="kh-progress-row">
+        <span>Bijna klaar</span>
+        <div class="kh-bar"><div class="kh-bar-fill" style="width:${pct}%"></div></div>
+        <span>~ ${sec} sec</span>
+      </div>`;
+  }
+
+  khRender();
+  document.getElementById('kh-start-btn').addEventListener('click', () =>
+    document.getElementById('keuzehulp-sectie').scrollIntoView({ behavior:'smooth' }));
 
   // Wishlist
   document.querySelectorAll('.btn-wish').forEach(b => b.onclick = () => b.classList.toggle('on'));
