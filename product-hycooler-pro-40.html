@@ -41,10 +41,33 @@
   /* NAV */
   .nav { position: sticky; top: 0; z-index: 40; background: #1A1A1A; border-bottom: none; }
   .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; max-width: 1180px; margin: 0 auto; padding: 0 32px; }
-  .logo { font-family: 'Ubuntu', sans-serif; font-weight: 700; font-size: 19px; letter-spacing: 0.12em; color: var(--white); text-transform: uppercase; }
+  .nav-left { display: flex; align-items: center; gap: 32px; }
+  .logo { font-family: 'Ubuntu', sans-serif; font-weight: 700; font-size: 19px; letter-spacing: 0.12em; color: var(--white); text-transform: uppercase; flex-shrink: 0; }
   .logo em { color: var(--orange); font-style: normal; }
-  .nav-links { display: flex; gap: 28px; font-size: 14px; font-weight: 400; color: rgba(255,255,255,0.72); font-family: 'Ubuntu', sans-serif; }
-  .nav-links a:hover { color: var(--white); }
+  .nav-links { display: flex; align-items: center; gap: 0; font-size: 14px; font-weight: 400; color: rgba(255,255,255,0.72); font-family: 'Ubuntu', sans-serif; }
+  .nav-link-simple { padding: 0 14px; height: 64px; display: flex; align-items: center; color: rgba(255,255,255,0.72); transition: color .15s; }
+  .nav-link-simple:hover { color: var(--white); }
+  .nav-item { position: relative; height: 64px; display: flex; align-items: center; }
+  .nav-item > a { padding: 0 14px; height: 64px; display: flex; align-items: center; gap: 4px; color: rgba(255,255,255,0.72); transition: color .15s; }
+  .nav-item:hover > a { color: var(--white); }
+  .nav-chevron { width: 10px; height: 10px; opacity: .6; flex-shrink: 0; transition: transform .2s; }
+  .nav-item:hover .nav-chevron { transform: rotate(180deg); opacity: 1; }
+  /* MEGA MENU */
+  .mega-menu { position: absolute; top: 64px; left: -20px; min-width: 780px; background: var(--white); border: 1px solid var(--line); border-radius: 0 0 14px 14px; box-shadow: 0 20px 50px rgba(0,0,0,0.14); opacity: 0; visibility: hidden; transition: opacity .18s, visibility .18s; z-index: 100; pointer-events: none; }
+  .nav-item:hover .mega-menu { opacity: 1; visibility: visible; pointer-events: auto; }
+  .mega-inner { display: grid; grid-template-columns: repeat(4, 1fr); }
+  .mega-col { padding: 20px 18px; border-right: 1px solid var(--line); }
+  .mega-col:last-child { border-right: none; }
+  .mega-col-img { aspect-ratio: 4/3; border-radius: 8px; overflow: hidden; background: #111; margin-bottom: 12px; }
+  .mega-col-img img { width: 100%; height: 100%; object-fit: contain; padding: 8px; }
+  .mega-col-title { font-family: 'Ubuntu', sans-serif; font-weight: 700; font-size: 13px; color: var(--ink); margin-bottom: 8px; }
+  .mega-div { height: 1px; background: var(--line); margin-bottom: 10px; }
+  .mega-links { display: flex; flex-direction: column; gap: 6px; }
+  .mega-links a { font-size: 12px; color: var(--orange); line-height: 1.4; }
+  .mega-links a:hover { text-decoration: underline; }
+  .mega-help { margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--line); }
+  .mega-help a { font-size: 12px; color: var(--muted); font-style: italic; }
+  .mega-help a:hover { color: var(--ink); }
   .nav-actions { display: flex; gap: 8px; align-items: center; }
   .nav-icon { background: none; border: none; cursor: pointer; color: rgba(255,255,255,0.82); padding: 8px; display: flex; align-items: center; transition: color .15s; position: relative; }
   .nav-icon:hover { color: var(--white); }
@@ -113,12 +136,12 @@
   .picker-label span { color: var(--muted); font-weight: 400; }
   .picker-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
   .pick { border: 1.5px solid var(--line); border-radius: 10px; padding: 12px 10px; cursor: pointer; text-align: left; background: var(--white); font-family: inherit; display: flex; flex-direction: column; gap: 2px; transition: border-color .15s; position: relative; }
-  .pick:hover { border-color: var(--ink); }
-  .pick.on { border-color: var(--ink); background: var(--paper); }
+  .pick:hover { border-color: var(--orange); }
+  .pick.on { border-color: var(--orange); background: var(--orange-light); }
   .pick .sz { font-family: 'Archivo'; font-weight: 700; font-size: 15px; }
   .pick .info { font-size: 11.5px; color: var(--muted); }
   .pick .pr { font-size: 13px; font-weight: 600; margin-top: 4px; }
-  .pick.popular::after { content: 'Populairst'; position: absolute; top: -9px; left: 50%; transform: translateX(-50%); background: var(--ink); color: var(--white); font-size: 9px; font-weight: 700; padding: 2px 8px; border-radius: 3px; letter-spacing: .06em; white-space: nowrap; }
+  .pick.popular::after { content: 'Populairst'; position: absolute; top: -9px; left: 50%; transform: translateX(-50%); background: var(--orange); color: var(--white); font-size: 9px; font-weight: 700; padding: 2px 8px; border-radius: 3px; letter-spacing: .06em; white-space: nowrap; }
 
   /* zone explanation */
   .zone-explain { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
@@ -218,8 +241,20 @@
   /* MODEL COMPARISON */
   .model-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--line); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; margin-top: 40px; }
   .model-col { background: var(--white); padding: 28px 24px; display: flex; flex-direction: column; gap: 16px; }
-  .model-col.highlight { background: var(--paper); position: relative; }
-  .model-col.highlight::before { content: 'Deze pagina'; position: absolute; top: 14px; right: 14px; background: var(--ink); color: var(--white); font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 4px; letter-spacing: .04em; }
+  .model-col.highlight { background: var(--ink); position: relative; }
+  .model-col.highlight::before { content: 'Je keuze'; position: absolute; top: 14px; right: 14px; background: var(--orange); color: var(--white); font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 4px; letter-spacing: .04em; }
+  .model-col.highlight .model-name { color: var(--white); }
+  .model-col.highlight .model-tagline { color: rgba(255,255,255,0.6); }
+  .model-col.highlight .model-spec-row { border-color: rgba(255,255,255,0.1); }
+  .model-col.highlight .model-spec-row .sk { color: rgba(255,255,255,0.5); }
+  .model-col.highlight .model-spec-row .sv { color: var(--white); }
+  .model-col.highlight .model-img { background: rgba(255,255,255,0.06); }
+  .model-col.highlight .pro-sz { border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.75); }
+  .model-col.highlight .pro-sz:hover { border-color: rgba(255,255,255,0.5); }
+  .model-col.highlight .pro-sz.active { background: var(--orange); border-color: var(--orange); color: var(--white); }
+  .model-col.highlight .check-yes { color: #6EE08A; }
+  .model-col.highlight .check-no { color: rgba(255,255,255,0.3); }
+  .model-col.highlight .model-cta.primary { background: var(--orange); border-color: var(--orange); }
   .model-img { aspect-ratio: 4/3; border-radius: 10px; overflow: hidden; background: var(--paper); }
   .model-img img { width: 100%; height: 100%; object-fit: contain; padding: 12px; }
   .model-name { font-family: 'Archivo'; font-weight: 800; font-size: 18px; }
@@ -241,7 +276,7 @@
   .feat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; padding: 64px 0; border-top: 1px solid var(--line); }
   .feat-row.flip { direction: rtl; }
   .feat-row.flip > * { direction: ltr; }
-  .feat-img { aspect-ratio: 4/3; border-radius: 16px; overflow: hidden; background: var(--paper); }
+  .feat-img { aspect-ratio: 4/3; border-radius: 16px; overflow: hidden; background: var(--orange-light); }
   .feat-img img { width: 100%; height: 100%; object-fit: contain; padding: 20px; display: block; }
   .feat-text { display: flex; flex-direction: column; gap: 16px; }
   .feat-badge { font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--orange); }
@@ -313,6 +348,38 @@
   .sticky-atc-btn:hover { background: #248534; }
   @media (max-width: 600px) { .sticky-atc { padding: 10px 20px; } .sticky-atc-name { font-size: 14px; } }
 
+  /* CART POPUP */
+  .cart-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 300; opacity: 0; visibility: hidden; transition: opacity .25s, visibility .25s; }
+  .cart-overlay.open { opacity: 1; visibility: visible; }
+  .cart-panel { position: fixed; top: 0; right: 0; bottom: 0; width: 400px; max-width: 100vw; background: var(--white); z-index: 301; transform: translateX(100%); transition: transform .3s cubic-bezier(.4,0,.2,1); display: flex; flex-direction: column; box-shadow: -8px 0 40px rgba(0,0,0,0.12); }
+  .cart-overlay.open .cart-panel { transform: translateX(0); }
+  .cart-head { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px; border-bottom: 1px solid var(--line); flex-shrink: 0; }
+  .cart-head h4 { font-family: 'Archivo'; font-weight: 700; font-size: 17px; }
+  .cart-close { background: none; border: none; cursor: pointer; color: var(--muted); display: flex; align-items: center; padding: 4px; border-radius: 6px; transition: color .15s; }
+  .cart-close:hover { color: var(--ink); }
+  .cart-items { flex: 1; overflow-y: auto; padding: 20px 24px; display: flex; flex-direction: column; gap: 16px; }
+  .cart-item { display: flex; gap: 14px; align-items: flex-start; }
+  .cart-item-img { width: 72px; height: 72px; flex-shrink: 0; border-radius: 10px; background: var(--paper); overflow: hidden; }
+  .cart-item-img img { width: 100%; height: 100%; object-fit: contain; padding: 6px; }
+  .cart-item-body { flex: 1; min-width: 0; }
+  .cart-item-name { font-size: 14px; font-weight: 600; color: var(--ink); line-height: 1.35; }
+  .cart-item-meta { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .cart-item-price { font-family: 'Archivo'; font-weight: 700; font-size: 15px; margin-top: 5px; }
+  .cart-item-discount { font-size: 11px; color: var(--orange); font-weight: 600; margin-top: 1px; }
+  .cart-item-remove { background: none; border: none; cursor: pointer; color: var(--muted); font-size: 20px; line-height: 1; padding: 0 0 0 6px; flex-shrink: 0; align-self: center; transition: color .15s; }
+  .cart-item-remove:hover { color: var(--ink); }
+  .cart-divider { height: 1px; background: var(--line); flex-shrink: 0; }
+  .cart-footer { padding: 20px 24px; flex-shrink: 0; }
+  .cart-subtotal { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 16px; }
+  .cart-subtotal-label { font-size: 14px; color: var(--muted); }
+  .cart-subtotal-val { font-family: 'Archivo'; font-weight: 800; font-size: 24px; }
+  .cart-cta-row { display: flex; gap: 10px; }
+  .cart-btn-view { flex: 1; height: 48px; border: 1.5px solid var(--ink); background: var(--white); color: var(--ink); border-radius: 8px; font-family: 'Archivo'; font-weight: 700; font-size: 14px; cursor: pointer; transition: background .15s; }
+  .cart-btn-view:hover { background: var(--paper); }
+  .cart-btn-checkout { flex: 1; height: 48px; background: #2E9A43; color: var(--white); border: none; border-radius: 8px; font-family: 'Archivo'; font-weight: 700; font-size: 14px; cursor: pointer; transition: background .15s; }
+  .cart-btn-checkout:hover { background: #248534; }
+  @media (max-width: 480px) { .cart-panel { width: 100vw; } }
+
   /* FOOTER */
   footer { background: var(--ink); color: var(--white); padding: 56px 0 28px; font-size: 14px; }
   .foot-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
@@ -340,13 +407,101 @@
 
 <header class="nav">
   <div class="nav-inner">
-    <a href="index.html" class="logo">HYCKES<em>.</em></a>
-    <nav class="nav-links">
-      <a href="#">Koelboxen</a>
-      <a href="#">Koelkasten</a>
-      <a href="#">Airco's</a>
-      <a href="#">Support</a>
-    </nav>
+    <div class="nav-left">
+      <a href="index.html" class="logo">HYCKES<em>.</em></a>
+      <nav class="nav-links">
+
+        <!-- Koelboxen met mega menu -->
+        <div class="nav-item">
+          <a href="#">Koelboxen
+            <svg class="nav-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l4 4 4-4"/></svg>
+          </a>
+          <div class="mega-menu">
+            <div class="mega-inner">
+              <div class="mega-col">
+                <div class="mega-col-img"><img src="Productfoto's/HyCooler Pro 40 Dual zone/dual40_3d_right.png" alt=""></div>
+                <div class="mega-col-title">HyCooler koelboxen</div>
+                <div class="mega-div"></div>
+                <div class="mega-links">
+                  <a href="#">Alle koelboxen</a>
+                  <a href="#">HyCooler Go serie</a>
+                  <a href="#">HyCooler Life serie</a>
+                  <a href="#">HyCooler Pro serie</a>
+                </div>
+                <div class="mega-help"><a href="#">Help mij kiezen →</a></div>
+              </div>
+              <div class="mega-col">
+                <div class="mega-col-img"><img src="Productfoto's/HyFridge 65/Hyfridge 65 - 3d.png" alt=""></div>
+                <div class="mega-col-title">HyFridge koelkasten</div>
+                <div class="mega-div"></div>
+                <div class="mega-links">
+                  <a href="#">Alle koelkasten</a>
+                  <a href="#">HyFridge serie</a>
+                  <a href="#">HyFridge Dual Zone serie</a>
+                  <a href="#">HyFridge Slide serie</a>
+                </div>
+                <div class="mega-help"><a href="#">Help mij kiezen →</a></div>
+              </div>
+              <div class="mega-col">
+                <div class="mega-col-img"><img src="Productfoto's/HyBreeze Air/hybreeze_air_front_3d.png" alt=""></div>
+                <div class="mega-col-title">HyBreeze airco's</div>
+                <div class="mega-div"></div>
+                <div class="mega-links">
+                  <a href="#">Alle airco's</a>
+                  <a href="#">HyBreeze Air serie</a>
+                </div>
+              </div>
+              <div class="mega-col">
+                <div class="mega-col-img"><img src="Productfoto's/HyCooler Powerpack/powerpack_3d_1.png" alt=""></div>
+                <div class="mega-col-title">Accessoires</div>
+                <div class="mega-div"></div>
+                <div class="mega-links">
+                  <a href="#">Alle accessoires</a>
+                  <a href="#">Koelbox accessoires</a>
+                  <a href="#">Koelkast accessoires</a>
+                  <a href="#">Airconditioner accessoires</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Koelkasten met mini mega -->
+        <div class="nav-item">
+          <a href="#">Koelkasten
+            <svg class="nav-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l4 4 4-4"/></svg>
+          </a>
+          <div class="mega-menu">
+            <div class="mega-inner" style="grid-template-columns: repeat(2, 1fr)">
+              <div class="mega-col">
+                <div class="mega-col-img"><img src="Productfoto's/HyFridge 65/Hyfridge 65 - 3d.png" alt=""></div>
+                <div class="mega-col-title">HyFridge koelkasten</div>
+                <div class="mega-div"></div>
+                <div class="mega-links">
+                  <a href="#">Alle koelkasten</a>
+                  <a href="#">HyFridge serie</a>
+                  <a href="#">HyFridge Dual Zone serie</a>
+                  <a href="#">HyFridge Slide serie</a>
+                </div>
+                <div class="mega-help"><a href="#">Help mij kiezen →</a></div>
+              </div>
+              <div class="mega-col">
+                <div class="mega-col-img"><img src="Productfoto's/HyCooler Powerpack/powerpack_3d_1.png" alt=""></div>
+                <div class="mega-col-title">Accessoires koelkast</div>
+                <div class="mega-div"></div>
+                <div class="mega-links">
+                  <a href="#">Koelkast accessoires</a>
+                  <a href="#">HyFridge Stand</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <a href="#" class="nav-link-simple">Airco's</a>
+        <a href="#" class="nav-link-simple">Support</a>
+      </nav>
+    </div>
     <div class="nav-actions">
       <button class="nav-icon" aria-label="E-mail">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
@@ -433,12 +588,12 @@
 
         <!-- Dual zone (default) -->
         <div class="picker-row" id="picks-dual">
-          <button class="pick on popular" data-size="40 Dual zone" data-zone="dual" data-price="379" data-was="399" data-liters="40" data-persons="3–4">
+          <button class="pick on" data-size="40 Dual zone" data-zone="dual" data-price="379" data-was="399" data-liters="40" data-persons="3–4">
             <span class="sz">Pro 40</span>
             <span class="info">40L · 3–4 pers.</span>
             <span class="pr">€379</span>
           </button>
-          <button class="pick" data-size="50 Dual zone" data-zone="dual" data-price="449" data-was="479" data-liters="50" data-persons="4+">
+          <button class="pick popular" data-size="50 Dual zone" data-zone="dual" data-price="449" data-was="479" data-liters="50" data-persons="4+">
             <span class="sz">Pro 50</span>
             <span class="info">50L · 4+ pers.</span>
             <span class="pr">€449</span>
@@ -548,7 +703,7 @@
           <div class="upsell-head">Maak het compleet</div>
           <label class="upsell-item">
             <input type="checkbox" class="upsell-check" id="upsell-powerpack">
-            <div class="upsell-thumb">🔋</div>
+            <div class="upsell-thumb"><img src="Productfoto's/HyCooler Powerpack/powerpack_3d_1.png" alt="Powerpack" style="width:100%;height:100%;object-fit:contain;padding:2px"></div>
             <div class="upsell-info">
               <span class="upsell-name">HyCooler Powerpack</span>
               <span class="upsell-sub">Tot 24u off-grid · 173Wh · 1,1 kg</span>
@@ -557,7 +712,7 @@
           </label>
           <label class="upsell-item">
             <input type="checkbox" class="upsell-check" id="upsell-solar">
-            <div class="upsell-thumb">☀️</div>
+            <div class="upsell-thumb"><img src="Productfoto's/HyCooler Solar panel/solar_standing_3d_front.png" alt="Solar Panel" style="width:100%;height:100%;object-fit:contain;padding:2px"></div>
             <div class="upsell-info">
               <span class="upsell-name">Solar Panel 100W</span>
               <span class="upsell-sub">Onbeperkt koelen op zon · via Powerpack</span>
@@ -1032,6 +1187,30 @@
   </div>
 </footer>
 
+<!-- CART POPUP -->
+<div class="cart-overlay" id="cart-overlay">
+  <div class="cart-panel" id="cart-panel">
+    <div class="cart-head">
+      <h4>Toegevoegd aan winkelwagen</h4>
+      <button class="cart-close" id="cart-close">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="cart-items" id="cart-items"></div>
+    <div class="cart-divider"></div>
+    <div class="cart-footer">
+      <div class="cart-subtotal">
+        <span class="cart-subtotal-label">Subtotaal</span>
+        <span class="cart-subtotal-val">€<span id="cart-total">379</span></span>
+      </div>
+      <div class="cart-cta-row">
+        <button class="cart-btn-view" onclick="document.getElementById('cart-overlay').classList.remove('open')">Bekijk winkelwagen</button>
+        <button class="cart-btn-checkout">Afrekenen</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- STICKY ATC -->
 <div class="sticky-atc" id="sticky-atc">
   <div class="sticky-atc-info">
@@ -1131,6 +1310,81 @@
     const count = +bar.parentElement.dataset.count;
     bar.innerHTML = Array(count).fill('<span class="cap-sq"></span>').join('');
   });
+
+  // Cart popup
+  const cartOverlay = document.getElementById('cart-overlay');
+  const cartItemsEl = document.getElementById('cart-items');
+  const cartTotalEl = document.getElementById('cart-total');
+  const navBadgeEl  = document.querySelector('.nav-badge');
+
+  const upsells = [
+    { id: 'upsell-powerpack', name: 'HyCooler Powerpack', meta: '173Wh · 1,1 kg', price: 99, img: "Productfoto's/HyCooler Powerpack/powerpack_3d_1.png", discount: '13,4% korting toegepast' },
+    { id: 'upsell-solar',     name: 'Solar Panel 100W',   meta: '100W · opvouwbaar', price: 159, img: "Productfoto's/HyCooler Solar panel/solar_standing_3d_front.png", discount: null }
+  ];
+
+  function buildCartItem(img, name, meta, price, discount, qty) {
+    return `<div class="cart-item">
+      <div class="cart-item-img"><img src="${img}" alt="${name}"></div>
+      <div class="cart-item-body">
+        <div class="cart-item-name">${name}</div>
+        <div class="cart-item-meta">${meta}</div>
+        ${discount ? `<div class="cart-item-discount">${discount}</div>` : ''}
+        <div class="cart-item-price">${qty > 1 ? qty + '× ' : ''}€${price},-</div>
+      </div>
+      <button class="cart-item-remove" onclick="this.closest('.cart-item').remove(); recalcCart()">×</button>
+    </div>`;
+  }
+
+  function recalcCart() {
+    let total = 0;
+    cartItemsEl.querySelectorAll('.cart-item-price').forEach(el => {
+      const match = el.textContent.match(/€(\d+)/);
+      if (match) total += parseInt(match[1]);
+    });
+    cartTotalEl.textContent = total;
+    const count = cartItemsEl.querySelectorAll('.cart-item').length;
+    if (navBadgeEl) navBadgeEl.textContent = count;
+  }
+
+  function openCart() {
+    const btn = document.querySelector('#picks-dual .pick.on, #picks-single .pick.on');
+    const d   = btn ? btn.dataset : { size: '40 Dual zone', price: '379' };
+    const qty = parseInt(document.querySelector('.qty input').value) || 1;
+
+    let html = buildCartItem(
+      "Productfoto's/HyCooler Pro 40 Dual zone/dual40_3d_right.png",
+      `HyCooler Pro ${d.size}`,
+      `${d.liters || '40'}L · compressor koelbox`,
+      parseInt(d.price) * qty,
+      null,
+      qty
+    );
+
+    upsells.forEach(u => {
+      const cb = document.getElementById(u.id);
+      if (cb && cb.checked) {
+        html += buildCartItem(u.img, u.name, u.meta, u.price, u.discount, 1);
+      }
+    });
+
+    cartItemsEl.innerHTML = html;
+    recalcCart();
+    cartOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  document.getElementById('cart-close').onclick = closeCart;
+  cartOverlay.addEventListener('click', e => { if (e.target === cartOverlay) closeCart(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeCart(); });
+
+  function closeCart() {
+    cartOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelector('.btn-add').addEventListener('click', openCart);
+  document.querySelector('.sticky-atc-btn').addEventListener('click', openCart);
+  document.querySelector('.btn-final').addEventListener('click', openCart);
 
   // Wishlist
   document.querySelectorAll('.btn-wish').forEach(b => b.onclick = () => b.classList.toggle('on'));
